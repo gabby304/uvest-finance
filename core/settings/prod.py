@@ -4,7 +4,7 @@ import dj_database_url
 
 ALLOWED_HOSTS = [config('HOST_DOMAIN'), config('CUSTOM_DOMAIN')]
 
-DEBUG = False   
+DEBUG = True   
 
 
 # aws settings
