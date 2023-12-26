@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5 text-center">
+    <p><b><h4 class="text-success">{{ message }} <i class="fa fa-check-circle"></i></h4></b></p>
+    <a href="{% url 'login' %}" class="btn btn-info">You can now login to your dashboard</a>
+</div>
+{% endblock content %}

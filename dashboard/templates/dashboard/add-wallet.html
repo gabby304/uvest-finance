@@ -1,0 +1,70 @@
+{% extends "dashboard-base.html" %} 
+
+{% block side-nav %}
+  {% include "./includes/side-nav.html" %}
+{% endblock side-nav %}
+
+{% block add-wallet %}
+<div id="layoutSidenav_content">
+  <main>
+
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="header-title text-center">Add Wallet</h4>
+          </div>
+          <div class="card-body">
+            <form
+              method="post"
+            >
+            {% csrf_token %}
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="control-label">Wallet name</label>
+                    <input type="text" name="wallet_name" class="form-control">
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="control-label">CryptoCurrency</label>
+                    <select
+                      class="form-control"
+                      name="crypto"
+                      required
+                    >
+                      <option value="BTC">Bitcoin</option>
+                      <option value="USDT (TRC20)">Tether USD (TRC20)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="control-label">Address</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="address"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="col-md-12 mt-4">
+                    <div class="text-center">
+                        <button class="btn btn-success" type="submit"><i class='fa fa-plus-circle'></i> Add Wallet</button>
+                    </div>
+                </div>
+                
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<!--End layoutSidenav_content-->
+{% endblock add-wallet %}

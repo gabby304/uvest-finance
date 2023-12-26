@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5 text-center">
+    <p><b><h4 class="text-danger">{{ error }} <i class="fa fa-times-circle"></i></h4></b></p>
+    <a href="{% url 'homepage' %}" class="btn btn-info">Back to Homepage</a>
+</div>
+{% endblock content %}

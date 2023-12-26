@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+<title>Contact Us</title>
+{% endblock title %}
+
+{% block contact %}
+{% include "./includes/navbar.html" %}
+<main class="nk-pages">
+    <div class="section">
+        <div class="container">
+            <div class="nk-block">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="section-head text-center">
+                            <h2 class="title title-regular">We’re here to help you</h2>
+                            <p class="wide-sm">We’re happy to answer any questions you might have. Send us a message via
+                                our live support chat or contact us via mail!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="row justify-content-between gutter-100px">
+                            <div class="col-md-6">
+                                <div class="feature feature-center card card-s3 card-lg-xy">
+                                    <div class="feature-icon feature-icon-lg-s2 pb-4 mt-0 mx-auto">
+                                        <img src="{% static 'public/home/images/icons/icon-t3.png' %}" alt="">
+                                    </div>
+                                    <div class="feature-text">
+                                        <h4 class="title title-lg">Contact Us</h4>
+                                        <p>If you feel free please contact us for any information.</p>
+                                        <a href="#" class="btn btn-md btn-outline btn-secondary"> Contact Us</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="feature feature-center card card-s3 card-lg-xy">
+                                    <div class="feature-icon feature-icon-lg-s2 pb-4 mt-0 mx-auto">
+                                        <img src="{% static 'public/home/images/icons/icon-t4.png' %}" alt="">
+                                    </div>
+                                    <div class="feature-text">
+                                        <h4 class="title title-lg">Live chat</h4>
+                                        <p class="lead lead-s2"><strong>Want to speak to an agent?</strong></p>
+                                        <p>Use the chat box in the bottom right-hand corner of the page. It take a few
+                                            minute to Reply.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- // -->
+</main>
+
+<section class="contact-form-wrap section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="section-title text-center">
+                    <h2 class="text-md mb-2">Contact Us</h2>
+                    <div class="divider mx-auto my-4"></div>
+                    <p class="mb-5">Write us a message</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <form id="contact-form" class="contact__form" autocomplete="off" method="post">
+                    {% csrf_token %}
+                    <!-- form message -->
+                    <div class="row mb-2">
+                        <div class="col-12">
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <input name="fullname" id="name" type="text" class="form-control" placeholder="Your Name"
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <input name="email" id="email" type="email" class="form-control"
+                                    placeholder="Your Email" required>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <input name="subject" id="subject" type="text" class="form-control"
+                                    placeholder="Your Subjects" required>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <input name="phone_number" id="phone" type="tel" class="form-control" placeholder="Your Phone">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group-2 mb-4">
+                        <textarea name="message" id="message" class="form-control" rows="8" placeholder="Your message"
+                            required></textarea>
+                    </div>
+
+                    <div class="text-center">
+                        <input class="btn btn-success" type="submit" value="Send Message"></input>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% include "./includes/footer.html" %}
+{% endblock contact %}

@@ -1,0 +1,56 @@
+{% extends "base.html" %} 
+{% load static %} 
+
+{% block title %}
+<title>Withdrawal Policy</title>
+{% endblock title %}
+
+{% block service %}
+    {% include "./includes/navbar.html" %} 
+    <section class="section pb-0 ov-h mb-5">
+        <div class="container">
+            <div class="nk-block">
+                <div class="section-head">
+                    <h2 class="title">Withdrawal Policy</h2>
+                </div>
+                <div class="row gutter-vr-15px">
+                    <div class="col-md-10 col-sm-12 mb-3">
+                        <div class="nk-block-text">
+                            <p>To withdraw funds from his/her verified account, the Client shall submit a withdrawal request from his/her personal profile. In order to fill in the withdrawal request properly, the Client shall choose one of the withdrawal methods shown in the list and specify all the necessary details.</p>
+                            <p>After the Client submits a withdrawal request, such request will be assigned a "Requested" status. When the request is being processed, it has an "In Process" status. After the "In Process" status is assigned, the requested funds will be debited from the Client's account balance. After the withdrawal request is assigned a "Processed" status, the requested funds will be transferred to the payment system.</p>
+                            <p>Withdrawal requests are processed by the financial department of the Company one-at-a-time. The processing time is 3 business days. The Company reserves the right to increase the processing time; in such case, the Company shall notify the Client via any contact method specified by the Client in his/her profile.</p>
+                            <p>The Company may not process withdrawals less than the minimum amount set by the relevant payment provider and/or due to technical limitations. Further information can be found in the Deposits and Withdrawals section on the website.</p>
+                            <p>The Company reserves the right to increase the processing time and/or cancel withdrawal requests submitted by the Client, without prior notice, during an internal risk assessment of the Client’s account in relation to activities which insinuates the following(this list is not exhaustive):</p>
+                            <ul class="mb-3">
+                                <li>i. Fraud;</li>
+                                <li>ii. Money laundering;</li>
+                                <li>iii. Unfair usage of the Company’s General Fees Policy and the Terms of the Agreement;</li>
+                                <li>iv. other activities by the Client which may indicate breach of provisions of the Agreement and/or the applicable law;</li>
+                            </ul>
+                            <p>
+                                For the purpose of the risk assessment, the Company shall be entitled to block the account immediately (without giving prior notice) and to request from the Client additional supporting documents as it may deem necessary.
+                            </p>
+                            <p>The Client has the right to withdraw funds only to the payment system that was used to deposit funds to his/her account. 
+                                In cases where it is technically impossible to withdraw funds to the payment system that was used to deposit funds, 
+                                an alternative payment method shall be chosen and the payment details shall meet the conditions specified by the Client in his/her personal info.
+                            </p>
+                            <p>
+                                The Client is fully responsible for the information he/she provides to the Company through the withdrawal request.
+                            </p>
+                            <p>
+                                If the Client uses a bank card for making deposits, 
+                                withdrawals shall be made to this bank card in the amounts not exceeding the amount deposited within 90 (ninety) calendar days from the last deposit. Withdrawals to bank cards have greater priority than other types of withdrawals.
+                            </p>
+                            <p class="mb-3">If you have any questions about this Privacy Policy, You can contact us:</p>
+                            <ul class="pl-4">
+                                <li>By email: <a href="mailto:support@uvestfinance.com">support@uvestfinance.com</a></li>
+                                <li>By visiting our website: <a href="{% url 'homepage' %}">https://uvestfinance.com</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% include "./includes/footer.html" %}
+{% endblock service %}

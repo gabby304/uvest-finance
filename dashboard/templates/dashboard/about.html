@@ -1,0 +1,99 @@
+{% extends "base.html" %} 
+{% load static %} 
+
+{% block title %}
+<title>About Us</title>
+{% endblock title %}
+
+{% block about %}
+{% include "./includes/navbar.html" %} 
+<main class="nk-pages">
+    <section class="section pb-0 ov-h">
+        <div class="container">
+            <div class="nk-block">
+                <div class="section-head text-center">
+                    <h2 class="title">About Us</h2>
+                </div>
+                <div class="row gutter-vr-15px justify-content-center">
+                    <div class="col-lg-6 col-mb-10">
+                        <div class="nk-block-text">
+                            <p>We are lowering the barrier of entry to accepting global payments by bridging the gap between our clients and their business. Achieving swift and seamless payment processing is the goal for us at UvestFinance, by building a degitalized payment gateway.</p>
+                            <p>We combine the power of technology and human resources to maximize your average result, there for making sure you're always secure, and all transactions are processed and updated accordingly</p>
+                            <p>Our goal is to empower businesses to accept cross-border payments and perform secure online transactions with hitch-free. We ensure that everyone is kept in the loop and no one is left out, especially not our users.</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- // -->
+    <section class="section">
+        <div class="container">
+            <div class="nk-block nk-block-text-wrap">
+                <div class="row align-items-center gutter-vr-30px justify-content-lg-between justify-content-center">
+                    <div class="col-lg-5 col-mb-10">
+                        <div class="nk-block-img gfx-re-mdl py-5 py-lg-0">
+                            <img src="{% static 'public/home/images/gfx/gfx-z-i.png' %}" alt="app">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-mb-10">
+                        <div class="nk-block-text">
+                            <div class="pb-5">
+                                <h2 class="title title-regular">Our Mission</h2>
+                                <p class="lead lead-regular">Our purpose is to help more and more people experience financial well-being through the use of algorithms. We are dedicated to helping our clients, employees, shareholders and communities to experience online payment with ease.</p>
+                                <!--<p>Centralized exchanges sacrifice security to achieve Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim </p>-->
+                                <!--<p>But I must explain to you how all this mistaken idea of denouncing plea sure and praising pain was born.</p>-->
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- .row -->
+            </div><!-- .block @e  -->
+        </div>
+    </section>
+    <!-- // -->
+    <section class="section pt-0">
+        <div class="container">
+            <div class="nk-block nk-block-text-wrap">
+                <div class="row align-items-center gutter-vr-30px justify-content-lg-between justify-content-center">
+                    <div class="col-lg-5 col-mb-10 order-lg-last">
+                        <div class="nk-block-img gfx-re-lg">
+                            <img src="{% static 'public/home/images/gfx/gfx-z-j.png' %}" alt="app">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-mb-10">
+                        <div class="nk-block-text">
+                            <div class="pb-5">
+                                <h2 class="title title-regular">Our Vision</h2>
+                                <p class="lead lead-regular">We respect how hard our clients worked to build their nest egg therefore we are guided by an all-encompassing culture and a set of principles that ensure we never forget what we stand for - to help more and more people invest in processing their daily financial transactions.</p>
+                                <!--<p>Centralized exchanges sacrifice security to achieve Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim</p>-->
+                                <!--<p>But I must explain to you how all this mistaken idea of denouncing plea sure and praising pain was born.</p>-->
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- .row -->
+            </div><!-- .block @e  -->
+        </div>
+    </section>
+    <!-- // -->
+    <section class="section pb-0">
+        <div class="container">
+            <div class="nk-block">
+                <div class="section-head wide-sm text-center">
+                    <h2 class="title">UvestFinance team members around the world</h2>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-mb-10">
+                        <div class="payment-holder">
+                            <div class="nk-block-img">
+                                <img src="{% static 'public/home/images/map/map2.png' %}" alt="map">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+    {% include "./includes/footer.html" %}
+{% endblock about %}

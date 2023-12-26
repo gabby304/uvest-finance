@@ -1,0 +1,87 @@
+{% extends "base.html" %} 
+{% load static %} 
+
+{% block title %}
+<title>Our Services</title>
+{% endblock title %}
+
+{% block service %}
+<style>
+    .section {
+        padding: 90px 0;
+    }
+
+    .service-block {
+        padding: 30px 20px;
+        margin-top: 40px;
+        border: 1px solid rgba(0, 0, 0, 0.03);
+        box-shadow: 0 0 38px rgba(21, 40, 82, 0.07);
+    }
+    .service-2 .service-block i {
+        font-size: 40px;
+        color: #e12355;
+    }
+    </style>
+    {% include "./includes/navbar.html" %} 
+    <section class="section service-2">
+        <div class="container">
+            <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="service-block mb-5 text-center">
+                        <i class="fa-solid fa-money-bill-transfer"></i>
+                        <div class="content">
+                            <h4 class="mt-4 mb-2 title-color">Portfolio Investment</h4>
+                            <p class="mb-4">Get Financial portfolio tailored to meet you specific financial objectives.</p>
+                        </div>
+                    </div>
+                </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="service-block mb-5 text-center">
+                        <i class="fa-solid fa-wallet"></i>
+                        <div class="content">
+                            <h4 class="mt-4 mb-2 title-color">Multi Currency</h4>
+                            <p class="mb-4">We supports multi currency. Bank conveniently with currencies of your choice.</p>
+                        </div>
+                    </div>
+                </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="service-block mb-5 text-center">
+                        <i class="fa-solid fa-coins"></i>
+                        <div class="content">
+                            <h4 class="mt-4 mb-2 title-color">Exchange Currency</h4>
+                            <p class="mb-4">We offer lowest exchange fee so you can exchange your currency anytime.</p>
+                        </div>
+                    </div>
+                </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="service-block mb-5 text-center">
+                        <i class="fa-solid fa-building-columns"></i>
+                        <div class="content">
+                            <h4 class="mt-4 mb-2 title-color">Fixed Deposit</h4>
+                            <p class="mb-4">We offers long term investment and you will get good interest rate after maturity.</p>
+                        </div>
+                    </div>
+                </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="service-block mb-5 text-center">
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                        <div class="content">
+                            <h4 class="mt-4 mb-2 title-color">Apply Loan</h4>
+                            <p class="mb-4">We offers different types loan with low interest rate. You can get a loan easily.</p>
+                        </div>
+                    </div>
+                </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="service-block mb-5 text-center">
+                        <i class="fa-solid fa-hand-holding-dollar"></i>
+                        <div class="content">
+                            <h4 class="mt-4 mb-2 title-color">Withdrawal</h4>
+                            <p class="mb-4">Withdraw your assets comfortably anytime, anywhere.</p>
+                        </div>
+                    </div>
+                </div>
+                    </div>
+        </div>
+    </section>
+    {% include "./includes/footer.html" %}
+{% endblock service %}

@@ -1,0 +1,86 @@
+{% extends "dashboard-base.html" %} 
+
+{% block side-nav %} 
+  {% include "./includes/side-nav.html" %} 
+{% endblock side-nav %} 
+
+
+{% block withdraw-money %}
+
+<div id="layoutSidenav_content">
+  <main>
+    <div class="row">
+      <article class="card">
+        <div class="card-body p-5">
+          <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="username">Account</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"
+                    ><i class="fa fa-user"></i
+                  ></span>
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{ user.get_user_fullname }}"
+                  min="100"
+                  readonly
+                />
+              </div>
+              <!-- input-group.// -->
+            </div>
+            <div class="form-group">
+              <label for="username">Amount in dollars</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"
+                    ><i class="fa fa-money"></i
+                  ></span>
+                </div>
+                <input
+                  type="number"
+                  class="form-control"
+                  name="amount"
+                  min="100"
+                  required
+                />
+              </div>
+              <!-- input-group.// -->
+            </div>
+            <!-- form-group.// -->
+
+            <div class="form-group">
+              <label for="cardNumber">Wallet</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"
+                    ><i class="fa fa-credit-card"></i
+                  ></span>
+                </div>
+                <select class="form-control" name="wallet" required>
+                  {% for wallet in wallets %}
+                  <option value="{{ wallet.pk }}">
+                    {{ wallet.wallet_name }}
+                  </option>
+                  {% endfor %}
+                </select>
+              </div>
+              <!-- input-group.// -->
+            </div>
+            <!-- form-group.// -->
+            <button class="subscribe btn btn-primary btn-block" type="submit">
+              Confirm
+            </button>
+          </form>
+        </div>
+        <!-- card-body.// -->
+      </article>
+      <!-- card.// -->
+    </div>
+  </main>
+</div>
+<!--End layoutSidenav_content-->
+{% endblock withdraw-money %}

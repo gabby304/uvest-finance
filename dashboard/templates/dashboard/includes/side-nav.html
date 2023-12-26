@@ -1,0 +1,145 @@
+{% load static %}
+
+<div id="layoutSidenav" class="container-fluid d-flex align-items-stretch">
+    <div id="layoutSidenav_nav">
+        <span class="close-mobile-nav"><i class="fa fa-close"></i></span>
+        <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
+
+            <div class="sidebar-user">
+                <a href="{% url 'account-detail' %}">
+                    <img src="{% static 'public/backend/images/defaultprofile.jpg' %}"
+                        alt="user-image" height="42" class="rounded-circle shadow-sm">
+                    <span class="sidebar-user-name">{{ user.get_user_fullname }}</span>
+                </a>
+            </div>
+
+            <div class="sb-sidenav-menu">
+                <div class="nav">
+                    <div class="sb-sidenav-menu-heading">NAVIGATIONS</div>
+
+                    <a class="nav-link" href="{% url 'dashboard' %}">
+                        <div class="sb-nav-link-icon"><i class="fa fa-bar-chart"></i></div>
+                        Dashboard
+                    </a>
+                    <a class="nav-link" href="{% url 'exchange-currency' %}">
+                        <div class="sb-nav-link-icon"><i class="fa fa-exchange"></i></div>
+                        Exchange Money
+                    </a>
+                    <a class="nav-link" href="{% url 'activate-card' %}">
+                        <div class="sb-nav-link-icon"><i class="fa fa-unlock"></i></div>
+                        Activate virtual card
+                    </a>
+                    <a class="nav-link" href="{% url 'active-cards' %}">
+                        <div class="sb-nav-link-icon"><i class="fa fa-credit-card"></i></div>
+                         Active Cards
+                    </a>
+
+
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#deposit"
+                        aria-expanded="false" aria-controls="collapseLayouts">
+                        <div class="sb-nav-link-icon"><i class="fa fa-plus-circle"></i></div>
+                        Deposit Money
+                        <div class="sb-sidenav-collapse-arrow"><i class="fa fa-long-arrow-down"></i></div>
+                    </a>
+                    <div class="collapse" id="deposit" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link"
+                                href="{% url 'automatic-deposit' %}">Automatic
+                                Deposit</a>
+
+                            <a class="nav-link" href="{% url 'manual-methods' %}">Manual
+                                Deposit</a>
+                        </nav>
+                    </div>
+
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#loans"
+                        aria-expanded="false" aria-controls="collapseLayouts">
+                        <div class="sb-nav-link-icon"><i class="fa fa-dollar"></i></div>
+                        Loans
+                        <div class="sb-sidenav-collapse-arrow"><i class="fa fa-long-arrow-down"></i></div>
+                    </a>
+                    <div class="collapse" id="loans" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="{% url 'apply-loan' %}">Apply New
+                                Loan</a>
+                            <a class="nav-link" href="{% url 'loans' %}">My Loans</a>
+                        </nav>
+                    </div>
+
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#fdr"
+                        aria-expanded="false" aria-controls="collapseLayouts">
+                        <div class="sb-nav-link-icon"><i class="fa fa-money"></i></div>
+                        Fixed Deposit
+                        <div class="sb-sidenav-collapse-arrow"><i class="fa fa-long-arrow-down"></i></div>
+                    </a>
+                    <div class="collapse" id="fdr" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="{% url 'fixed-deposit' %}">Apply New
+                                FRD</a>
+                            <a class="nav-link" href="{% url 'history' %}">FDR
+                                History</a>
+                        </nav>
+                    </div>
+
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#dps"
+                        aria-expanded="false" aria-controls="collapseLayouts">
+                        <div class="sb-nav-link-icon"><i class="fa fa-briefcase"></i></div>
+                        DPS Scheme
+                        <div class="sb-sidenav-collapse-arrow"><i class="fa fa-long-arrow-down"></i></div>
+                    </a>
+                    <div class="collapse" id="dps" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="{% url 'dps-schemes-plan' %}">DPS
+                                Plans</a>
+                            <a class="nav-link" href="{% url 'my-dps' %}">My DPS</a>
+                        </nav>
+                    </div>
+
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#tickets"
+                        aria-expanded="false" aria-controls="collapseLayouts">
+                        <div class="sb-nav-link-icon"><i class="fa fa-users"></i></div>
+                        Support Tickets
+                        <div class="sb-sidenav-collapse-arrow"><i class="fa fa-long-arrow-down"></i></div>
+                    </a>
+                    <div class="collapse" id="tickets" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="{% url 'create-ticket' %}">Create
+                                New Ticket</a>
+                            <a class="nav-link"
+                                href="{% url 'tickets' %}">My
+                                Tickets</a>
+                        </nav>
+                    </div>
+
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#wallet"
+                        aria-expanded="false" aria-controls="collapseLayouts">
+                        <div class="sb-nav-link-icon"><i class="fa fa-plus-circle"></i><i class="fa fa-btc"></i></div>
+                        Wallets
+                        <div class="sb-sidenav-collapse-arrow"><i class="fa fa-long-arrow-down"></i></div>
+                    </a>
+                    <div class="collapse" id="wallet" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link"
+                                href="{% url 'add-wallet' %}">Add Wallet</a>
+
+                            <a class="nav-link" href="{% url 'my-wallets' %}">My
+                                Wallets</a>
+                        </nav>
+                    </div>
+                    <a class="nav-link" href="{% url 'withdrawal' %}">
+                        <div class="sb-nav-link-icon"><i class="fa fa-money"></i></div>
+                         Withdrawal
+                    </a>
+                    <a class="nav-link" href="{% url 'transaction-report' %}">
+                        <div class="sb-nav-link-icon"><i class="fa fa-pie-chart"></i></div>
+                        Transactions Report
+                    </a>
+                    <a class="nav-link" href="{% url 'logout' %}">
+                        <div class="sb-nav-link-icon"><i class="fa fa-sign-out"></i></div>
+                         Logout
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!--End layoutSidenav_nav-->

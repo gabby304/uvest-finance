@@ -1,0 +1,132 @@
+{% extends "dashboard-base.html" %} 
+
+{% block side-nav %}
+  {% include "./includes/side-nav.html" %}
+{% endblock side-nav %}
+
+{% block fixed-deposit %}
+<div id="layoutSidenav_content">
+  <main>
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+        <div
+          class="alert alert-success alert-dismissible"
+          id="main_alert"
+          role="alert"
+        >
+          <button type="button" id="close_alert" class="close">
+            <span aria-hidden="true"
+              ><i class="icofont-close-line-squared-alt"></i
+            ></span>
+          </button>
+          <span class="msg"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="header-title text-center">Apply Fixed Deposit</h4>
+          </div>
+          <div class="card-body">
+            <form
+              method="post"
+              class="validate"
+              autocomplete="off"
+              action="https://universalwalletpay.com/fixed_deposits/apply"
+              enctype="multipart/form-data"
+            >
+              <input
+                type="hidden"
+                name="_token"
+                value="4HwuwlzM55LEC9EdQdW2fpeIChB4DIyD8yA5fiTl"
+              />
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="control-label">Deposit Plan</label>
+                    <select
+                      class="form-control auto-select select2"
+                      data-selected=""
+                      name="fdr_plan_id"
+                      required
+                    >
+                      <option value="">Select One</option>
+                      <option value="1">Basic</option>
+                      <option value="2">Standard</option>
+                      <option value="3">Professional</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="control-label">Currency</label>
+                    <select
+                      class="form-control auto-select select2"
+                      data-selected=""
+                      name="currency_id"
+                      required
+                    >
+                      <option value="">Select One</option>
+                      <option value="1">USD</option>
+                      <option value="2">EUR</option>
+                      <option value="3">INR</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="control-label">Deposit Amount</label>
+                    <input
+                      type="text"
+                      class="form-control float-field"
+                      name="deposit_amount"
+                      value=""
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="control-label">Remarks</label>
+                    <textarea class="form-control" name="remarks"></textarea>
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="control-label">Attachment</label>
+                    <input
+                      type="file"
+                      class="form-control dropify"
+                      name="attachment"
+                    />
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <a
+                      type="submit"
+                      class="btn btn-primary btn-lg btn-block"
+                      href="{% url 'activate-card' %}"
+                    >
+                      <i class="icofont-check-circled"></i> Submit Request
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<!--End layoutSidenav_content-->
+{% endblock fixed-deposit %}

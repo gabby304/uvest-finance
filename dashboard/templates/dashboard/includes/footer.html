@@ -1,0 +1,141 @@
+{% load static %}
+
+
+<footer class="nk-footer bg-theme ov-h">
+    <section
+      class="section section-m section-footer tc-light bg-transparent pb-0 ov-h"
+    >
+      <div class="container">
+        <!-- Block @s  -->
+        <div class="nk-block block-footer mgb-m30">
+          <div class="row justify-content-between">
+            <!-- .col -->
+            <div class="col-sm-3 mb-sm-0 col-6">
+              <div
+                class="wgs wgs-menu animated"
+                data-animate="fadeInUp"
+                data-delay="0.2"
+              >
+                <h6 class="wgs-title">Company</h6>
+                <div class="wgs-body">
+                  <ul class="wgs-links">
+                    <li><a href="{% url 'about' %}">About Us</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                    <li><a href="{% url 'services' %}">Our Services</a></li>
+                    <li><a href="{% url 'faq' %}">Faqs</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-3 mb-sm-0 col-6">
+              <div
+                class="wgs wgs-menu animated"
+                data-animate="fadeInUp"
+                data-delay="0.2"
+              >
+                <h6 class="wgs-title">Learn More</h6>
+                <div class="wgs-body">
+                  <ul class="wgs-links">
+                    <li><a href="#">Responsible Trading</a></li>
+                    <li><a href="#">What is Leverage?</a></li>
+                    <li><a href="#">General Risk Disclosure</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- .col -->
+            <div class="col-md-3 col-sm-4 mb-sm-0 col-6">
+              <div
+                class="wgs wgs-menu animated"
+                data-animate="fadeInUp"
+                data-delay="0.3"
+              >
+                <h6 class="wgs-title">Legal</h6>
+                <div class="wgs-body">
+                  <ul class="wgs-links">
+                    <li><a href="{% url 'terms' %}">Terms and conditions</a></li>
+                    <li><a href="{% url 'privacy-policy' %}">Privacy Policy</a></li>
+                    <li><a href="{% url 'withdrawal-policy' %}">Withdrawal Policy</a></li>
+                    <li><a href="{% url 'funding-policy' %}">User Funding Policy</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- .col -->
+            <div class="col-sm-3 mb-sm-0 col-6">
+              <div
+                class="wgs wgs-menu animated"
+                data-animate="fadeInUp"
+                data-delay="0.2"
+              >
+                <h6 class="wgs-title">Top Instruments</h6>
+                <div class="wgs-body">
+                  <ul class="wgs-links">
+                    <li><a href="#">Bitcoin</a></li>
+                    <li><a href="#">Ethereum</a></li>
+                    <li><a href="#">Gold</a></li>
+                    <li><a href="#">Apple</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="col-sm-2 mb-sm-0 col-6">
+              <div
+                class="wgs wgs-menu animated"
+                data-animate="fadeInUp"
+                data-delay="0.4"
+              >
+                <h6 class="wgs-title">Follow</h6>
+                <div class="wgs-body">
+                  <ul class="wgs-links">
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">YouTube</a></li>
+                    <li><a href="#">Medium</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div> -->
+            <!-- .col -->
+          </div>
+          <!-- .row -->
+        </div>
+        <!-- .block @e  -->
+      </div>
+    </section>
+
+    <div
+      class="section section-m footer-bottom animated"
+      data-animate="fadeInUp"
+      data-delay="0.5"
+    >
+      <div class="container">
+        <div class="row justify-content-md-between align-items-center">
+          <div class="col-lg-6 col-md-3 col-sm-4">
+            <a
+              href="{% url 'homepage' %}"
+              class="wgs-logo-s2 d-inline-block mb-2 mb-md-0 d-flex"
+            >
+            <img src="{% static 'public/home/images/favicon.png' %}" alt="logo">
+            <p class="logo-p pl-1 pt-2">UvestFinance</p>
+            </a>
+          </div>
+          <div class="col-lg-6 col-md-8">
+            <div class="copyright-text">
+              <ul
+                class="d-flex justify-content-between align-items-center flex-wrap flex-md-nowrap"
+              >
+                <li><a href="{% url 'terms' %}">User Agreement</a></li>
+                <li><a href="{% url 'privacy-policy' %}">Privacy Policy</a></li>
+                <li>
+                  <p>&copy;2022 - UvestFinance. All rights reserved</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nk-ovm shape-z7 ov-h"></div>
+  </footer>

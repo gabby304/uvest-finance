@@ -1,0 +1,98 @@
+{% extends "dashboard-base.html" %} 
+
+{% block side-nav %}
+  {% include "./includes/side-nav.html" %}
+{% endblock side-nav %}
+
+{% block support-ticket %}
+<div id="layoutSidenav_content">
+  <main>
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+        <div
+          class="alert alert-success alert-dismissible"
+          id="main_alert"
+          role="alert"
+        >
+          <button type="button" id="close_alert" class="close">
+            <span aria-hidden="true"
+              ><i class="icofont-close-line-squared-alt"></i
+            ></span>
+          </button>
+          <span class="msg"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+        <div class="card no-export">
+          <div class="card-header">
+            <h4 class="header-title text-center">Create New Ticket</h4>
+          </div>
+          <div class="card-body">
+            <form
+              method="post"
+              class="validate"
+              autocomplete="off"
+              action="{% url 'create-ticket' %}"
+              enctype="multipart/form-data"
+            >
+             {% csrf_token %}
+              <div class="row px-2">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="control-label">Subject</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="subject"
+                      value=""
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="control-label">Message</label>
+                    <textarea
+                      class="form-control"
+                      name="message"
+                      rows="8"
+                      required
+                    ></textarea>
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="control-label">Attachment</label>
+                    <input
+                      type="file"
+                      class="trickycode-file"
+                      name="attachment"
+                    />
+                  </div>
+                </div>
+
+                <div class="col-md-12 mt-2">
+                  <div class="form-group">
+                    <button
+                      type="submit"
+                      class="btn btn-primary btn-lg btn-block"
+                    >
+                      <i class="icofont-check-circled"></i> Submit
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<!--End layoutSidenav_content-->
+{% endblock support-ticket %}

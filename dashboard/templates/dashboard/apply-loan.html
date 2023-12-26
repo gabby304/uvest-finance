@@ -1,0 +1,144 @@
+{% extends "dashboard-base.html" %} 
+
+{% block side-nav %} 
+{% include "./includes/side-nav.html" %} 
+{% endblock side-nav %} 
+
+{% block loan %}
+
+<div id="layoutSidenav_content">
+  <main>
+    <div class="row">
+      <div class="col-lg-12">
+        <div
+          class="alert alert-success alert-dismissible"
+          id="main_alert"
+          role="alert"
+        >
+          <button type="button" id="close_alert" class="close">
+            <span aria-hidden="true"
+              ><i class="icofont-close-line-squared-alt"></i
+            ></span>
+          </button>
+          <span class="msg"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header">
+            <span class="panel-title">Apply New Loan</span>
+          </div>
+          <div class="card-body">
+            <form
+            action="{% url 'apply-loan' %}"
+              method="post"
+              class="validate"
+              autocomplete="off"
+              enctype="multipart/form-data"
+              
+            >
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="control-label">Loan Product</label>
+                    <select
+                      class="form-control auto-select"
+                      data-selected=""
+                      name="loan_product"
+                      required
+                    >
+                      <option value="">Select One</option>
+                      <option>Student Loan</option>
+                      <option>Business Loan</option>
+                      <option>Enterprise Loan</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="control-label">Currency</label>
+                    <select
+                      class="form-control auto-select"
+                      data-selected=""
+                      name="currency"
+                      required
+                    >
+                      <option value="">Select One</option>
+                      <option>USD</option>
+                      <option>EUR</option>
+                      <option>INR</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="control-label">First Payment Date</label>
+                    <input
+                      type="text"
+                      class="form-control datepicker"
+                      name="proposed_payment_date"
+                      value=""
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="control-label">Applied Amount</label>
+                    <input
+                      type="text"
+                      class="form-control float-field"
+                      name="amount"
+                      value=""
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="control-label">Attachment</label>
+                    <input
+                      type="file"
+                      class="form-control"
+                      name="identity"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="control-label">Description</label>
+                    <textarea
+                      class="form-control"
+                      name="description"
+                      required
+                    ></textarea>
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-primary">
+                      <i class="fa fa-check-circle"></i> Submit Application
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<!--End layoutSidenav_content-->
+{% endblock loan %}

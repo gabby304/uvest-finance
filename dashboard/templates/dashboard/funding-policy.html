@@ -1,0 +1,40 @@
+{% extends "base.html" %} 
+{% load static %} 
+
+{% block title %}
+<title>User Funding Policy</title>
+{% endblock title %}
+
+{% block funding-policy %}
+    {% include "./includes/navbar.html" %}
+    <section class="section pb-0 ov-h mb-5">
+        <div class="container">
+            <div class="nk-block">
+                <div class="section-head">
+                    <h2 class="title">Payment Policy</h2>
+                </div>
+                <div class="row gutter-vr-15px">
+                    <div class="col-md-10 col-sm-12 mb-3">
+                        <div >
+                            <p>The Company is financially responsible for the Client's account balance at any moment.</p>
+                            <p>The Company’s financial responsibility starts with the first record about the Client’s deposit and continues up to the full withdrawal of the funds.</p>
+                            <p>The Client has the right to demand from the Company any amount of funds which is available in their account at the time of the inquiry.</p>
+                            <p>The only official deposit/withdrawal methods are the methods that appear on the Company’s official Website. The Client is taking all the risks related to the use of the payment methods unless these payment methods are provided by the Company’s partners or are the Company’s responsibility. The Company isn’t responsible for any delay or cancellation of financial transactions that may be caused by the selected payment system. In case where the Client has any claims related to any of the payment systems, it’s their responsibility to contact the support service of the payment system and to notify the Company of their claims.</p>
+                            <p>The Company shall not be responsible for the activities of any third-party service providers that the Client may use in order to make any deposit/withdrawal. The Company’s financial responsibility for the Client’s funds starts when the funds arrive to the Company’s bank account or any other account related to the Company and this fact appears on the Payment Methods page of the Website. In case any fraud appears during the financial transaction or after it, the Company reserves the right to cancel the transaction and to freeze the Client's account.</p>
+                            <p>The Company’s responsibility as to the Client’s funds ends when the funds leave the Company’s bank account or any other account related to the Company and this fact appears on the Payment Methods page of the Website.</p>
+                            <p>In case of any technical errors that may appear when processing the financial transaction, the Company reserves the right to cancel that transaction and all other Client’s financial activity on the Company’s Website. </p>
+                            
+                            <p class="mb-3">If you have any questions about this Privacy Policy, You can contact us:</p>
+                            <ul class="pl-4">
+                                <li>By email: <a href="mailto:support@uvestfinance.com">support@uvestfinance.com</a></li>
+                                <li>By visiting our website: <a href="{% url 'homepage' %}">https://uvestfinance.com</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% include "./includes/footer.html" %}
+{% endblock funding-policy %}

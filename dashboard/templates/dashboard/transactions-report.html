@@ -1,0 +1,125 @@
+{% extends "dashboard-base.html" %} 
+
+{% block side-nav %}
+  {% include "./includes/side-nav.html" %}
+{% endblock side-nav %}
+
+{% block transaction-report %}
+<div id="layoutSidenav_content">
+
+	<main>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="alert alert-success alert-dismissible" id="main_alert" role="alert">
+					<button type="button" id="close_alert" class="close">
+						<span aria-hidden="true"><i class="icofont-close-line-squared-alt"></i></span>
+					</button>
+					<span class="msg"></span>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-12">
+				<div class="card">
+					<div class="card-header">
+						<span class="panel-title">Transactions Report</span>
+					</div>
+
+					<div class="card-body">
+
+						<div class="report-params">
+							<form class="validate" method="post"
+								action="https://universalwalletpay.com/reports/customer/transactions_report">
+								<div class="row">
+									<input type="hidden" name="_token" value="4HwuwlzM55LEC9EdQdW2fpeIChB4DIyD8yA5fiTl">
+
+									<div class="col-md-2">
+										<div class="form-group">
+											<label class="control-label">Start Date</label>
+											<input type="text" class="form-control datepicker" name="date1" id="date1"
+												value="" readOnly="true" required>
+										</div>
+									</div>
+
+									<div class="col-md-2">
+										<div class="form-group">
+											<label class="control-label">End Date</label>
+											<input type="text" class="form-control datepicker" name="date2" id="date2"
+												value="" readOnly="true" required>
+										</div>
+									</div>
+
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="control-label">Transaction Type</label>
+											<select class="form-control auto-select" data-selected=""
+												name="transaction_type">
+												<option value="">All</option>
+												<option value="Deposit">Deposit</option>
+												<option value="Withdraw">Withdraw</option>
+												<option value="Transfer">Transfer</option>
+												<option value="Wire_Transfer">Wire Transfer</option>
+												<option value="Payment">Payment</option>
+												<option value="Loan">Loan</option>
+												<option value="Loan_Repayment">Loan Repayment</option>
+												<option value="Exchange">Exchange</option>
+												<option value="Fixed_Deposit">Fixed Deposit</option>
+												<option value="DPS_Installment">DPS Installment</option>
+											</select>
+										</div>
+									</div>
+
+									<div class="col-md-3">
+										<div class="form-group">
+											<label class="control-label">Status</label>
+											<select class="form-control auto-select" data-selected="" name="status">
+												<option value="">All</option>
+												<option value="1">Pending</option>
+												<option value="2">Completed</option>
+												<option value="0">Cancelled</option>
+											</select>
+										</div>
+									</div>
+
+									<div class="col-md-2">
+										<button type="submit" class="btn btn-light btn-sm btn-block mt-26"><i
+												class="icofont-filter"></i> Filter</button>
+									</div>
+							</form>
+
+						</div>
+					</div>
+					<!--End Report param-->
+
+
+					<div class="report-header">
+						<h4>Transactions Report</h4>
+						<h5>---------- to ----------</h5>
+					</div>
+
+					<table class="table table-bordered report-table">
+						<thead>
+							<th>Date</th>
+							<th>Currency</th>
+							<th>Amount</th>
+							<th>Charge</th>
+							<th>Grand Total</th>
+							<th>DR/CR</th>
+							<th>Type</th>
+							<th>Status</th>
+							<th class="text-center">Details</th>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+</div>
+
+</main>
+
+</div>
+<!--End layoutSidenav_content-->
+{% endblock transaction-report %}

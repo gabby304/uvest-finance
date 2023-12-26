@@ -1,0 +1,53 @@
+{% extends "dashboard-base.html" %} 
+
+{% block side-nav %}
+  {% include "./includes/side-nav.html" %}
+{% endblock side-nav %}
+
+{% block support-ticket %}
+<div id="layoutSidenav_content">
+  <main>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card no-export">
+          <div class="card-header d-flex align-items-center">
+            <span class="panel-title">Closed Tickets</span>
+            <a
+              class="btn btn-primary btn-sm ml-auto"
+              href="{% url 'create-ticket' %}"
+              ><i class="fa fa-plus-circle"></i> Add New</a
+            >
+          </div>
+          <div class="card-body">
+            <table
+              id="support_tickets_table"
+              class="table table-bordered data-table"
+            >
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Subject</th>
+                  <th>Status</th>
+                  <th>Created</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for ticket in tickets %}
+                  <tr>
+                    <td>{{ ticket.pk }}</td>
+                    <td>{{ ticket.subject }}</td>
+                    <td>{{ ticket.status }}</td>
+                    <td>{{ ticket.created_at }}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<!--End layoutSidenav_content-->
+{% endblock support-ticket %}

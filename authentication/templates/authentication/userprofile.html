@@ -1,0 +1,363 @@
+{% extends "dashboard-base.html" %} 
+{% load static %}
+{% block side-nav %} 
+{% include "dashboard/includes/side-nav.html" %} 
+{% endblock side-nav %} 
+
+{% block userprofile %}
+<style>
+  .main-body {
+    padding: 15px;
+  }
+  .card {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  }
+
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+  }
+
+  .card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1rem;
+  }
+
+  .gutters-sm {
+    margin-right: -8px;
+    margin-left: -8px;
+  }
+
+  .gutters-sm > .col,
+  .gutters-sm > [class*="col-"] {
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+  .mb-3,
+  .my-3 {
+    margin-bottom: 1rem !important;
+  }
+
+  .bg-gray-300 {
+    background-color: #e2e8f0;
+  }
+  .h-100 {
+    height: 100% !important;
+  }
+  .shadow-none {
+    box-shadow: none !important;
+  }
+  .form-control {
+    border: 1px solid #cfd1d8;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    font-size: .825rem;
+    background: #ffffff;
+    color: #2e323c;
+}
+</style>
+<div class="container mt-5">
+  <div class="main-body">
+    <div class="row gutters-sm">
+      <div class="col-md-4 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex flex-column align-items-center text-center">
+              <img
+                src="{% static 'public/backend/images/defaultprofile.jpg' %}"
+                alt="Admin"
+                class="rounded-circle"
+                width="150"
+              />
+              <div class="mt-3">
+                <h4>{{ user.get_user_fullname }}</h4>
+                <p class="text-secondary mb-1">{{ user.gender }}</p>
+                <p class="text-muted font-size-sm">{{ user.country.name }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mt-3">
+          <ul class="list-group list-group-flush">
+            <li
+              class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+            >
+              <h6 class="mb-0 font-weight-bold">
+                Account Number
+              </h6>
+              <span class="text-secondary">{{ account.account_number }}</span>
+            </li>
+            <li
+              class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+            >
+              <h6 class="mb-0 font-weight-bold">
+                USD Balance
+              </h6>
+              <span class="text-secondary">{{ account.usd_account }}</span>
+            </li>
+            <li
+              class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+            >
+              <h6 class="mb-0 font-weight-bold">
+                EURO Balance
+              </h6>
+              <span class="text-secondary">{{ account.euro_account }}</span>
+            </li>
+            <li
+              class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+            >
+              <h6 class="mb-0 font-weight-bold">
+                INR Balance
+              </h6>
+              <span class="text-secondary">{{ account.inr_account }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0 font-weight-bold">Full Name</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{ user.get_user_fullname }}
+              </div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0 font-weight-bold">Email</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">{{ user.email }}</div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0 font-weight-bold">Phone</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">{{ user.phone_number }}</div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0 font-weight-bold">State</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">{{ user.state }}</div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0 font-weight-bold">City</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">{{ user.city }}</div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0 font-weight-bold">Zip Code</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">{{ user.zip_code }}</div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0 font-weight-bold">Address</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">{{ user.address }}</div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-sm-12">
+                <!-- Button trigger modal -->
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-toggle="modal"
+                  data-target=".bd-example-modal-lg"
+                >
+                  Edit
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade bd-example-modal-lg"
+  id="updateform"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit your Profile</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="row gutters">
+            <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+              <div class="card h-100">
+                <div class="card-body">
+                    <div class="row gutters">
+                        <form action="" method="POST" class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            {% csrf_token %}
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <h6 class="mb-2 text-primary">Personal Details</h6>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="fullName">First Name</label>
+                                    <input
+                                    type="text"
+                                    class="form-control"
+                                    id="fullName"
+                                    placeholder="Enter First name"
+                                    name="first_name"
+                                    value="{{ user.first_name }}"
+                                    />
+                                </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="fullName">Last Name</label>
+                                    <input
+                                    type="text"
+                                    class="form-control"
+                                    id="fullName"
+                                    placeholder="Enter Last name"
+                                    name="last_name"
+                                    value="{{ user.last_name }}"
+                                    />
+                                </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="eMail">Email</label>
+                                    <input
+                                    type="email"
+                                    class="form-control"
+                                    id="eMail"
+                                    placeholder="Enter email"
+                                    name="email"
+                                    value="{{ user.email }}"
+                                    />
+                                </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="phone">Phone</label>
+                                    <input
+                                    type="text"
+                                    class="form-control"
+                                    id="phone"
+                                    placeholder="Enter phone number"
+                                    name="phone_number"
+                                    value="{{ user.phone_number }}"
+                                    />
+                                </div>
+                                </div>
+                            </div>
+                            <div class="row gutters">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <h6 class="mt-3 mb-2 text-primary">Address</h6>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="Street">Street address</label>
+                                    <input
+                                    type="name"
+                                    class="form-control"
+                                    id="Street"
+                                    placeholder="Enter Street Address"
+                                    name="address"
+                                    value="{{ user.address }}"
+                                    />
+                                </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="ciTy">City</label>
+                                    <input
+                                    type="name"
+                                    class="form-control"
+                                    id="ciTy"
+                                    placeholder="Enter City"
+                                    name="city"
+                                    value="{{ user.city }}"
+                                    />
+                                </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="sTate">State</label>
+                                    <input
+                                    type="text"
+                                    class="form-control"
+                                    id="sTate"
+                                    placeholder="Enter State"
+                                    name="state"
+                                    value="{{ user.state }}"
+                                    />
+                                </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="zIp">Zip Code</label>
+                                    <input
+                                    type="text"
+                                    class="form-control"
+                                    id="zIp"
+                                    placeholder="Zip Code"
+                                    name="zip_code"
+                                    value="{{ user.zip_code }}"
+                                    />
+                                </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                  Close
+                                </button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock userprofile %}

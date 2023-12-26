@@ -1,0 +1,242 @@
+{% extends "base.html" %} 
+{% load static %} 
+
+{% block title %}
+<title>Sign Up</title>
+{% endblock title %} 
+
+
+{% block register %}
+<head>
+    <!-- auth -->
+    <link rel="stylesheet" href="{% static 'public/backend/assets/css/auth.css' %}">
+</head>
+<div class="nk-main bg">
+    <style>
+        .bg {
+          background-color: #0f074e;
+        }
+        .errorlist {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            color: rgb(107, 20, 20);
+        }
+        .errors {
+            border: 1px solid rgb(107, 20, 20);
+            background-color: rgb(240, 236, 236);
+        }
+    </style>
+  <!-- wrap @s  -->
+  <div class="nk-wrap nk-wrap-nosidebar">
+    <!-- content @s  -->
+    <div class="nk-content">
+      <div class="nk-block nk-block-middle nk-auth-body wide-xs">
+        <div class="brand-logo pb-4">
+          <a
+            href="{% url 'homepage' %}"
+            class="wgs-logo-s2 d-inline-block mb-2 mb-md-0 d-flex justify-content-center"
+          >
+          <img src="{% static 'public/home/images/favicon.png' %}" alt="logo">
+          <p class="logo-p logo-dark pt-2 pl-1">UvestFinance</p>
+          </a>
+        </div>
+        <div class="card card-bordered">
+          <div class="card-inner card-inner-lg">
+            <div class="nk-block-head">
+              <div class="nk-block-head-content">
+                <h4 class="nk-block-title">Sign-Up</h4>
+                <div class="nk-block-des">
+                  <p>Create an account to gain access to your dashboard.</p>
+                </div>
+              </div>
+            </div>
+            <form
+              action="{% url 'register' %}"
+              class="mt-4"
+              method="POST"
+              onsubmit="return submitUserForm();"
+            >
+              {% csrf_token %}
+
+              <div class="form-group">
+                <div class="form-label-group">
+                  <label class="form-label" for="default-01">First Name</label>
+                </div>
+                <input
+                  type="text"
+                  class="form-control {% if register_form.first_name.errors %} errors {% endif %}"
+                  name="first_name"
+                  value=""
+                  placeholder="First Name"
+                  required
+                />
+                {{ register_form.first_name.errors }}
+              </div>
+              <div class="form-group">
+                <div class="form-label-group">
+                  <label class="form-label" for="default-01">Last Name</label>
+                </div>
+                <input
+                  type="text"
+                  class="form-control {% if register_form.last_name.errors %} errors {% endif %}"
+                  name="last_name"
+                  value=""
+                  placeholder="Last Name"
+                  required
+                />
+                {{ register_form.last_name.errors }}
+              </div>
+              <div class="form-group">
+                <div class="form-label-group">
+                  <label class="form-label" for="default-01">Country</label>
+                </div>
+                {{ register_form.country }}
+                {{ register_form.country.errors }}
+              </div>
+              <div class="form-group">
+                <div class="form-label-group">
+                  <label class="form-label" for="default-01">Gender</label>
+                </div>
+                <select name="gender" id="country" class="form-control">
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <div class="form-label-group">
+                  <label class="form-label" for="default-01">Mobile</label>
+                </div>
+                {{ register_form.phone_number }} 
+                {{ register_form.phone_number.errors }}
+              </div>
+
+              <div class="form-group">
+                <div class="form-label-group">
+                  <label class="form-label" for="default-01"
+                    >Email Address</label
+                  >
+                </div>
+                <input
+                  type="email"
+                  name="email"
+                  class="form-control {% if register_form.email.errors %} errors {% endif %}"
+                  value=""
+                  placeholder="Enter email address"
+                  required
+                />
+                {{ register_form.email.errors }}
+              </div>
+              <div class="form-group">
+                <div class="form-label-group">
+                  <label class="form-label" for="default-01">Password</label>
+                </div>
+                <div class="form-control-wrap passwords">
+                <a
+                    class="form-icon form-icon-right passcode-switch"
+                    data-target="password"
+                    onclick="togglePassword1()"
+                  >
+                  <i class="fa-solid fa-eye"></i>
+                  </a>
+                  <input
+                    type="password"
+                    name="password1"
+                    id="password1"
+                    class="form-control {% if register_form.password1.errors %} errors {% endif %}"
+                    placeholder="Enter password"
+                    required
+                  />
+                </div>
+                {{ register_form.password1.errors }}
+              </div>
+
+              <div class="form-group">
+                <div class="form-label-group">
+                  <label class="form-label" for="default-01"
+                    >Confirm Password</label
+                  >
+                </div>
+                <div class="form-control-wrap passwords">
+                <a
+                    class="form-icon form-icon-right passcode-switch"
+                    data-target="password"
+                    onclick="togglePassword2()"
+                  >
+                  <i class="fa-solid fa-eye"></i>
+                  </a>
+                  <input
+                    type="password"
+                    name="password2"
+                    id="password2"
+                    class="form-control {% if register_form.password2.errors %} errors {% endif %}"
+                    placeholder="Confirm Password"
+                    required
+                  />
+                </div>
+                {{ register_form.password2.errors }}
+              </div>
+
+              <div class="form-row mt-2">
+                <div class="col-md-12">
+                  <input type="checkbox" name="terms" required />
+                  <span class="f-size-14 ml-2"
+                    >I agree with
+                    <a class="base--color" href="policy.html"
+                      >Privacy & Policy</a
+                    >,
+                    <a class="base--color" href="terms.html"
+                      >Terms & Condition</a
+                    >,
+                  </span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="form-group d-flex justify-content-center"></div>
+              </div>
+
+              <div class="form-group">
+                <button type="submit" class="btn btn-lg bg btn-primary btn-block">
+                  Sign up
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div class="form-note-s2 text-center pt-4">
+            Already have an account? <a href="{% url 'login' %}">Sign in</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- wrap @e  -->
+</div>
+<!-- content @e  -->
+
+<script>
+    function togglePassword1() {
+
+        const temp = document.getElementById("password1");
+        if (temp.type === "password") {
+                temp.type = "text";
+        }
+        else {
+            temp.type = "password";
+        }
+    }
+
+    function togglePassword2() {
+        const temp = document.getElementById("password2");
+        if (temp.type === "password") {
+                temp.type = "text";
+        }
+        else {
+            temp.type = "password";
+        }
+    }
+
+</script>
+
+{% endblock register %}

@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+  <link href="https://db.onlinewebfonts.com/c/353b79b2ea9db02690b55e55fb094e08?family=Bold" rel="stylesheet">
+  <title>Welcome to UvestFinance</title>
+</head>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f4f4f4;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h3 {
+      color: #415076;
+      text-align: center;
+    }
+
+    p {
+      color: #555;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .logo {
+      text-align: center;
+      /* display: flex; */
+      margin: auto;
+    }
+
+    .logo-p {
+    font-family: "Bold";
+    font-size: 1.5rem;
+    color: #415076;
+    }
+
+
+    .footer {
+      margin-top: 20px;
+      text-align: center;
+      color: #888;
+      font-size: 12px;
+    }
+  </style>
+
+<body>
+    <div class="logo">
+      <img src="{% static 'public/home/images/favicon.png' %}" alt="UvestFinance">
+      <p class="logo-p logo-light pl-1">UvestFinance</p>
+    </div>
+  <div class="container">
+    <h3>Welcome to UvestFinance</h3>
+    <p>Dear {{ first_name }},</p>
+    <p>Thank you for choosing UvestFinance for your financial services and portfolio needs. We are excited to embark on this journey with you.</p>
+    <p>Here are some key features you can expect from our services:</p>
+    <ul>
+      <li>Comprehensive financial planning</li>
+      <li>Customized portfolio building</li>
+      <li>Expert investment advice</li>
+      <li>Timely market insights</li>
+    </ul>
+    <p>If you have any questions or need assistance, feel free to reach out to our dedicated support team <a href="mailto:support@UvestFinance.bio">here</a>.</p>
+    <p>Once again, welcome to UvestFinance !</p>
+    <div class="footer">
+      <p>Best regards,<br>UvestFinance Team</p>
+    </div>
+  </div>
+</body>
+
+</html>

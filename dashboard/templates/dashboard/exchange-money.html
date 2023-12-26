@@ -1,0 +1,157 @@
+{% extends "dashboard-base.html" %} 
+
+{% block side-nav %} 
+{% include "./includes/side-nav.html" %} 
+{% endblock side-nav %} 
+
+{% block exchange-money %}
+<style>
+  #exchange {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 0 20px;
+    outline: 0;
+    color: #00539cff;
+    border: 4px solid #ffd662ff;
+  }
+  #balance-check {
+    visibility: hidden;
+  }
+</style>
+<div id="layoutSidenav_content">
+  <main>
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+        <div
+          class="alert alert-success alert-dismissible"
+          id="main_alert"
+          role="alert"
+        >
+          <button type="button" id="close_alert" class="close">
+            <span aria-hidden="true"
+              ><i class="icofont-close-line-squared-alt"></i
+            ></span>
+          </button>
+          <span class="msg"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="header-title text-center">Exchange Money</h4>
+          </div>
+          <div class="card-body">
+            <form
+              method="post"
+              class="validate"
+              autocomplete="off"
+              action="{% url 'exchange-currency' %}"
+              enctype="multipart/form-data"
+            >
+              {% csrf_token %}
+
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="control-label">Exchange From</label>
+                    <select
+                      class="form-control currency_select"
+                      name="exchange_from"
+                      id="currency_from"
+                      required
+                    >
+                      <option>USD</option>
+                      <option>EUR</option>
+                      <option>INR</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-4 text-center">
+                  <button id="exchange" type="button">
+                    <i class="fa fa-exchange"></i>
+                  </button>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="control-label">Exchange To</label>
+                    <select
+                      class="form-control currency_select"
+                      name="exchange_to"
+                      id="currency_to"
+                      required
+                    >
+                      <option>USD</option>
+                      <option>EUR</option>
+                      <option>INR</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="control-label">Amount</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      name="amount"
+                      id="amount"
+                      required
+                      readonly="false"
+                      min="50"
+                    />
+                    <span id="balance-check" class="text-danger">Insufficient balance in this currency account</span>
+                  </div>
+                </div>
+
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="control-label">Exchanged Amount</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="exchanged_amount"
+                      name="exchanged_amount"
+                      readonly
+                    />
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <h6 class="text-center fs-2" id="rate_info">
+                    <b class="text-success"></b>
+                  </h6>
+                </div>
+                <div class="col-md-12">
+                  <h6 class="text-info text-center">
+                    <b
+                      >No worries, $charges don't apply on virtual wallet
+                      exchange</b
+                    >
+                  </h6>
+                </div>
+
+                <div class="col-md-12 mt-4">
+                  <div class="form-group">
+                    <button
+                      type="submit"
+                      class="btn btn-primary btn-lg btn-block"
+                      id="submit_exchange"
+                      disabled
+                    >
+                      <i class="fa fa-check-circle"></i> Exchange Money
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<!--End layoutSidenav_content-->
+{% endblock exchange-money %}

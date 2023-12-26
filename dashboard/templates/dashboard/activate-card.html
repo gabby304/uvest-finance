@@ -1,0 +1,80 @@
+{% extends "dashboard-base.html" %} 
+{% load static %}
+
+{% block side-nav %}
+  {% include "./includes/side-nav.html" %}
+{% endblock side-nav %}
+
+{% block activate-card %}
+<div id="layoutSidenav_content">
+  <main>
+    <div class="container mt-5 ">
+      {% if error %}
+        <p class="text-center lead text-danger font-weight-bold">{{ error }}</p>
+      {% else %}
+        {% for charge in charges %}
+          <div class="card p-lg-5 p-md-3 p-sm-1 p-xsm-1">
+            <div class="card-body">
+              {% if charge.name == 'Basic Card Activation' %}
+              <div class="bank-card mx-auto mb-4" id="basic">
+                <header>
+                  <span class="logo">
+                    <img src="{% static 'public/home/images/favicon.png' %}" alt="logo" />
+                    <h5><strong>Finex Basic Card</strong></h5>
+                  </span>
+                  <img src="{% static 'public/backend/images/chip.png' %}" alt="chip" class="chip" />
+                </header>
+          
+                <div class="card-details">
+                  <div class="name-number">
+                    <h6>Card Number</h6>
+                    <h5 class="number">8050 xxxx xxxx xxxx</h5>
+                    <h5 class="name">Prem Kumar Shahi</h5>
+                  </div>
+                  <div class="valid-date">
+                    <h6>Valid Thru</h6>
+                    <h5>05/28</h5>
+                  </div>
+                </div>
+              </div>
+              {% else %}
+              <div class="bank-card mx-auto mb-4" id="standard">
+                <header>
+                  <span class="logo">
+                    <img src="{% static 'public/home/images/favicon.png' %}" alt="logo" />
+                    <h5><strong>Finex Standard Card</strong></h5>
+                  </span>
+                  <img src="{% static 'public/backend/images/chip.png' %}" alt="chip" class="chip" />
+                </header>
+          
+                <div class="card-details">
+                  <div class="name-number">
+                    <h6>Card Number</h6>
+                    <h5 class="number">8050 xxxx xxxx xxxx</h5>
+                    <h5 class="name">Prem Kumar Shahi</h5>
+                  </div>
+                  <div class="valid-date">
+                    <h6>Valid Thru</h6>
+                    <h5>05/28</h5>
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+              <h5 class="card-title text-center">{{ charge.name }} <i class=" fa fa-solid fa-certificate {% if charge.name == 'Basic Card Activation' %}
+                text-danger {% else %} text-success
+              {% endif %} "></i></h5>
+              <p class="card-text text-center">
+                <span>{{ charge.description }}</span>
+              </p>
+              <div class="text-center">
+                <a class="btn btn-outline-primary" {% if user.is_authenticated %} data-custom="{{ user.pk }}" {% endif %} href="{{ charge.hosted_url }}">Activate</a>
+              </div>
+            </div>
+          </div><br>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </main>
+</div>
+<!--End layoutSidenav_content-->
+{% endblock activate-card %}

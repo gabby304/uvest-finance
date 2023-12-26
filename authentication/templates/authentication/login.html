@@ -1,0 +1,118 @@
+{% extends "base.html" %} 
+{% load static %} 
+{% block register-head %} 
+    {% include "dashboard/includes/register-head.html" %} 
+{% endblock register-head %} 
+
+{% block login %}
+<head>
+    <!-- auth -->
+    <link rel="stylesheet" href="{% static 'public/backend/assets/css/auth.css' %}">
+</head>
+<div class="nk-main">
+    <style>
+        .bg{background-color: #0f074e;}
+    </style>
+  <!-- wrap @s  -->
+  <div class="nk-wrap nk-wrap-nosidebar bg">
+    <!-- content @s  -->
+    <div class="nk-content">
+      <div class="nk-block nk-block-middle nk-auth-body wide-xs">
+        <div class="brand-logo pb-4 text-center">
+          <a
+            href="{% url 'homepage' %}"
+            class="wgs-logo-s2 d-inline-block mb-2 mb-md-0 d-flex justify-content-center"
+          >
+          <img src="{% static 'public/home/images/favicon.png' %}" alt="logo">
+          <p class="logo-p logo-dark pt-2 pl-1">UvestFinance</p>
+          </a>
+        </div>
+        <div class="card card-bordered">
+          <div class="card-inner card-inner-lg">
+            <div class="nk-block-head">
+              <div class="nk-block-head-content">
+                <h4 class="nk-block-title">Sign-In</h4>
+                <div class="nk-block-des">
+                  <p>Enter your Email and password to access dashboard.</p>
+                </div>
+              </div>
+            </div>
+            <form
+              action=""
+              class="mt-4"
+              method="post"
+            >
+                {% csrf_token %}
+              <div class="form-group">
+                <div class="form-label-group">
+                  <label class="form-label" for="default-01">Email</label>
+                </div>
+                <input
+                  type="email"
+                  name="username"
+                  class="form-control form-control-lg"
+                  id="default-01"
+                  placeholder="Enter your email"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <div class="form-label-group">
+                  <label class="form-label" for="password">Password</label>
+                  <a class="link link-primary link-sm" href="{% url 'password_reset' %}"
+                    >Forgot Password?</a
+                  >
+                </div>
+                <div class="form-control-wrap">
+                  <a
+                    class="form-icon form-icon-right passcode-switch"
+                    data-target="password"
+                    onclick="TogglePassword()"
+                  >
+                  <i class="fa-solid fa-eye"></i>
+                  </a>
+                  <input
+                    type="password"
+                    name="password"
+                    class="form-control form-control-lg"
+                    id="password"
+                    placeholder="Enter your password"
+                    required
+                  />
+                </div>
+                <div class="form-control-wrap">
+                  <div class="form-group d-flex justify-content-center"></div>
+                </div>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-lg bg btn-primary btn-block">
+                  Sign in
+                </button>
+              </div>
+            </form>
+            <div class="form-note-s2 text-center pt-4">
+              New on our platform? <a href="{% url 'register' %}">Create an account</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- wrap @e  -->
+  </div>
+  <!-- content @e  -->
+</div>
+
+<script>
+    function TogglePassword() {
+            const temp = document.getElementById("password");
+
+            if (temp.type === "password") {
+                temp.type = "text";
+            }
+            else {
+                temp.type = "password";
+            }
+        }
+</script>
+
+{% endblock login %}

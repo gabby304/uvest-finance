@@ -1,0 +1,92 @@
+{% load static %}
+
+<!-- Header @s  -->
+<div class="header-main">
+  <div class="container container-xxl">
+    <div class="header-wrap">
+      <!-- Logo @s  -->
+      <div
+        class="header-logo logo animated"
+        data-animate="fadeInDown"
+        data-delay=".65"
+      >
+        <a href="{% url 'homepage' %}" class="logo-link d-flex">
+          <img src="{% static 'public/home/images/favicon.png' %}" alt="logo">
+          <p class="logo-p logo-light pl-1">UvestFinance</p>
+          <p class="logo-p-reverse logo-dark pl-1">UvestFinance</p>
+        </a>
+      </div>
+      <!-- Menu Toogle @s  -->
+      <div class="header-nav-toggle">
+        <a href="#" class="navbar-toggle" data-menu-toggle="header-menu">
+          <div class="toggle-line">
+            <span></span>
+          </div>
+        </a>
+      </div>
+      <!-- Menu @s  -->
+      <div
+        class="header-navbar header-navbar-s2 flex-grow-1 animated"
+        data-animate="fadeInDown"
+        data-delay=".75"
+      >
+        <nav class="header-menu header-menu-s2" id="header-menu">
+          <ul class="menu mx-auto">
+            <li class="menu-item">
+              <a class="menu-link nav-link" href="{% url 'homepage' %}">Home</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-link nav-link" href="{% url 'about' %}">About</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-link nav-link" href="{% url 'services' %}">Services</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-link nav-link" href="{% url 'contact' %}">Contact</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-link nav-link" href="{% url 'faq' %}">Faqs</a>
+            </li>
+          </ul>
+          {% if user.is_authenticated %}
+          <ul class="menu-btns">
+            <li>
+              <a
+                href="{% url 'dashboard' %}"
+                class="btn btn-md btn-auto btn-secondary btn-outline no-change"
+                ><span>Go to dashboard</span></a
+              >
+            </li>
+            <li>
+              <a
+                href="{% url 'logout' %}"
+                class="btn btn-md btn-auto btn-secondary no-change focus"
+                ><span>logout</span></a
+              >
+            </li>
+          </ul>
+          {% else %}
+          <ul class="menu-btns">
+            <li>
+              <a
+                href="{% url 'register' %}"
+                class="btn btn-md btn-auto btn-secondary btn-outline no-change"
+                ><span>Sign Up</span></a
+              >
+            </li>
+            <li>
+              <a
+                href="{% url 'login' %}"
+                class="btn btn-md btn-auto btn-secondary no-change focus"
+                ><span>Login</span></a
+              >
+            </li>
+          </ul>
+          {% endif %}
+        </nav>
+      </div>
+      <!-- .header-navbar @e  -->
+    </div>
+  </div>
+</div>
+<!-- .header-main @e  -->

@@ -1,0 +1,26 @@
+{% extends "dashboard-base.html" %} 
+
+{% block side-nav %}
+  {% include "./includes/side-nav.html" %}
+{% endblock side-nav %}
+
+{% block my-wallet %}
+<div id="layoutSidenav_content">
+  <main>
+    <div class="row">
+        {% for wallet in wallets %}          
+        <div class="col-lg-4">
+          <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title text-dark text-uppercase"><strong>{{ wallet.wallet_name }}</strong></h5>
+                <h6 class="card-subtitle mb-2 btn btn-success"><strong>{{ wallet.crypto }}</strong></h6>
+                <p class="card-text text-muted">{{ wallet.address }}</p>          
+              </div>
+          </div>
+        </div>
+        {% endfor %}
+    </div>
+  </main>
+</div>
+
+{% endblock my-wallet %}
