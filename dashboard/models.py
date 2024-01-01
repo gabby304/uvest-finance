@@ -79,10 +79,14 @@ class ActivationCard(models.Model):
     
 class Loan(models.Model):
     
+    
     class LoanProduct(models.TextChoices):
-        STUDENT_LOAN = 'Student Loan', 'Student Loan',
-        BUSINESS_LOAN = 'Business Loan', 'Business Loan'
-        ENTERPRISE_LOAN = 'Enterprise Loan', 'Enterprise Loan'
+        EDUCATION = 'Education', 'Education',
+        BUSINESS = 'Business', 'Business'
+        INVESTMENT = 'Investment', 'Investment'
+        HOUSE_BUYING = 'House Buying', 'House Buying'
+        HOUSE_IMPROVEMENT = 'House Improvement', 'House Improvement'
+        Other = 'Other', 'Other'
         
     class Currency(models.TextChoices):
         USD = 'USD', 'USD'
@@ -92,9 +96,21 @@ class Loan(models.Model):
     class Status(models.TextChoices):
         PENDING = "Pending", "Pending"
         COMPLETED = "Completed", "Completed"
+        
+    class MaritalStatus(models.TextChoices):
+        SINGLE = "Single", "Single"
+        MARRIED = "Married", "Married"
+        OTHER = "Other", "Other"
+        
+    class Experience(models.TextChoices):
+        FIRST = "0-1 Year", "0-1 Year"
+        SECOND = "1-2 Years", "1-2 Years"
+        THIRD = "3-4 Years", "3-4 Years"
+        FOURTH = "5+ Years", "5+ Years"
     
+    # Loan Information
     id = ShortUUIDField(primary_key=True, max_length=6, editable=False)
-    loan_product = models.CharField(max_length=20)
+    loan_type = models.CharField(max_length=20)
     identity = models.FileField(upload_to='files/identity')
     currency = models.CharField(max_length=15, choices=Currency.choices, default=Currency.USD)
     amount = models.FloatField()
@@ -103,8 +119,28 @@ class Loan(models.Model):
     description = models.TextField()
     collector = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
     status = models.CharField(max_length=20, choices=Status.choices, default=Status.PENDING)
+    
+    # Contact Information
+    title = models.CharField(max_length=20, null=True, blank=True)
+    first_name = models.CharField(max_length=50, null=True, blank=True)
+    last_name = models.CharField(max_length=50, null=True, blank=True)
+    email = models.EmailField(null=True, blank=True)
+    birth_date = models.DateField(null=True, blank=True)
+    marital_status = models.CharField(max_length=50, choices=MaritalStatus.choices, null=True, blank=True)
+    street_address = models.CharField(max_length=200, null=True, blank=True)
+    city = models.CharField(max_length=20, null=True, blank=True)
+    state = models.CharField(max_length=20, null=True, blank=True)
+    zip_code = models.CharField(max_length=20, null=True, blank=True)
+    
+    # Employment Infomation
+    occupation = models.CharField(max_length=50, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True)
+    employer_first_name = models.CharField(max_length=50, null=True, blank=True)
+    employer_last_name = models.CharField(max_length=50, null=True, blank=True)
+    experience = models.CharField(max_length=20, choices=Experience.choices, null=True, blank=True)
+    monthly_income = models.FloatField(null=True, blank=True)
+    mortgage = models.FloatField(null=True, blank=True)
     
     @property
     def balance(self):
@@ -120,7 +156,7 @@ class Loan(models.Model):
         super().save(*args, **kwargs)
     
     def __str__(self) -> str:
-        return f'{self.loan_product} for {self.collector}'     
+        return f'{self.loan_type} for {self.collector}'     
     
 
 class Ticket(models.Model):
@@ -151,7 +187,7 @@ class Ticket(models.Model):
         return f'TIcket no. {self.id} by {self.creator}'
     
     
-
+    
 class FixedDeposit(models.Model):
     
     class DepositPlan(models.TextChoices):

@@ -9,7 +9,7 @@ class AccountAdmin(admin.ModelAdmin):
     
 @admin.register(Loan) 
 class LoanAdmin(admin.ModelAdmin):
-    list_display = ('id', 'loan_product', 'amount', 'collector', 'status')
+    list_display = ('id', 'loan_type', 'amount', 'collector', 'status')
     
 @admin.register(Ticket)
 class TicketAdmin(admin.ModelAdmin):
