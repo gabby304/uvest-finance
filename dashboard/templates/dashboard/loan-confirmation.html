@@ -1,0 +1,38 @@
+{% load static %}
+{% load inlinecss %}
+{% inlinecss "public/home/assets/css/loan-confirmation.css" %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loan Application Confirmation</title>
+</head>
+<body>
+  <p>Dear {{ title }} {{ first_name }} {{ last_name }},</p>
+
+  <p>I trust this email finds you well. We appreciate your interest in our loan services and are pleased to inform you that your loan application has been successfully received and is currently under review.</p>
+
+  <p>Here are the details of your loan application:</p>
+  <ul>
+    <li><strong>Applicant's Full Name:</strong> {{ first_name }} {{ last_name }}</li>
+    <li><strong>Loan Amount Requested:</strong> {{ amount }} {{ currency }}</li>
+    <li><strong>Loan Type:</strong> {{ loan_type}}</li>
+    <li><strong>Application Reference Number:</strong> {{ pk }}</li>
+  </ul>
+
+  <p>Please be assured that our team is diligently assessing your application, and we will keep you updated on the progress. If additional information or documentation is required, a member of our team will reach out to you promptly.</p>
+
+  <p>If you have any immediate questions or concerns, please do not hesitate to contact our dedicated customer service team at support@uvestfinance.com.</p>
+
+  <p>We appreciate the opportunity to serve you and look forward to assisting you with your financial needs.</p>
+
+  <p>Thank you for choosing UvestFinance.</p>
+
+  <p>Best regards,</p>
+  <p>Terence Fischer<br>
+    UvestFinance Inc.<br>
+    support@uvestfinance.com</p>
+</body>
+</html>

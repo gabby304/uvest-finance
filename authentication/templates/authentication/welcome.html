@@ -1,4 +1,7 @@
 {% load static %}
+{% load inlinecss %}
+{% inlinecss "public/home/assets/css/welcome.css" %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,57 +13,6 @@
   <title>Welcome to UvestFinance</title>
 </head>
 
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f4f4f4;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .container {
-      max-width: 600px;
-      margin: 20px auto;
-      padding: 20px;
-      background-color: #fff;
-      border-radius: 5px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    h3 {
-      color: #415076;
-      text-align: center;
-    }
-
-    p {
-      color: #555;
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-    }
-
-    .logo {
-      text-align: center;
-      /* display: flex; */
-      margin: auto;
-    }
-
-    .logo-p {
-    font-family: "Bold";
-    font-size: 1.5rem;
-    color: #415076;
-    }
-
-
-    .footer {
-      margin-top: 20px;
-      text-align: center;
-      color: #888;
-      font-size: 12px;
-    }
-  </style>
 
 <body>
     <div class="logo">
@@ -77,6 +29,7 @@
       <li>Customized portfolio building</li>
       <li>Expert investment advice</li>
       <li>Timely market insights</li>
+      <li>Loan Application</li>
     </ul>
     <p>If you have any questions or need assistance, feel free to reach out to our dedicated support team <a href="mailto:support@UvestFinance.bio">here</a>.</p>
     <p>Once again, welcome to UvestFinance !</p>

@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model 
 from django.db.models.signals import post_save
 from django.dispatch import receiver 
-from dashboard.models import Account
+from dashboard.models import Account, Loan
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
@@ -39,3 +39,5 @@ def send_welcome_email(sender, instance, created, **kwargs) -> None:
         })
         helper = UserRelatedHelper(instance)
         helper.mailer('Welcome Email', subject, message)
+        
+        
