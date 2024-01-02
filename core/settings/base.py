@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     # third-party apps
     'phonenumber_field',
     'django_countries',
-    'storages'
+    'storages',
     'django_inlinecss'
 ]
 
