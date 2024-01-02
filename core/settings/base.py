@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'django_countries',
     'storages',
-    'django_inlinecss'
 ]
 
 MIDDLEWARE = [
