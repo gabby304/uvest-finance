@@ -31,58 +31,31 @@
             <h4 class="header-title text-center">Automatic Deposit Methods</h4>
           </div>
           <div class="card-body">
-            {% if user.card_activated %}
+          
             <div class="row justify-content-md-center">
               <div class="col-md-4">
                 <div class="card mb-4">
                   <div class="card-body text-center">
                     <img
-                      src="https://universalwalletpay.com/public/backend/images/gateways/1671102481IMG_6551.PNG"
+                      src="https://cdn-icons-png.flaticon.com/512/7909/7909129.png"
                       class="gateway-img"
                     />
-                    <h5>USDT TRC 20</h5>
-                    <h6 class="pt-1">
-                      Deposit Limit ($9,000.00 - $99,999,999.99)
+                    <h5>Deposit with any cryptocurrency of your choice</h5>
+                    <h6 class="pt-1 mt-3">
+                      Deposit Limit ($500.00 - $150,000.00)
                     </h6>
-                    <h6 class="pt-1">Deposit Charge ($0.00 + 0.00%)</h6>
-                    <button
-                      data-href="https://universalwalletpay.com/deposit/automatic_deposit/2"
-                      data-title="Deposit Via USDT TRC 20"
-                      class="btn btn-outline-primary mt-3 stretched-link ajax-modal"
-                    >
+                    <h6 class="pt-1 mt-3">Deposit Charge ($0.00 + 0.00%)</h6>
+                    <a class="btn btn-info btn-block"
+                      href="{{ deposit_checkout_link }}">
                       Deposit Now
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card mb-4">
-                  <div class="card-body text-center">
-                    <img
-                      src="https://universalwalletpay.com/public/backend/images/gateways/blockchain.png"
-                      class="gateway-img"
-                    />
-                    <h5>Bitcoin</h5>
-                    <h6 class="pt-1">
-                      Deposit Limit ($9,000.00 - $99,999,999.99)
-                    </h6>
-                    <h6 class="pt-1">Deposit Charge ($0.00 + 0.00%)</h6>
-                    <button
-                      data-href="https://universalwalletpay.com/deposit/automatic_deposit/5"
-                      data-title="Deposit Via Bitcoin"
-                      class="btn btn-outline-primary mt-3 stretched-link ajax-modal"
-                    >
-                      Deposit Now
-                    </button>
+                    </a>
+                    <script src="https://commerce.coinbase.com/v1/checkout.js?version=201807">
+                    </script>
                   </div>
                 </div>
               </div>
             </div>
-            {% else %}
-              <p class="text-center">Account not activated, Please activate your virtual account to start making deposits</p><br>
-              <div class="text-center"><a href="{% url 'activate-card' %}" class="btn btn-primary">Activate Account</a></div>
-            {% endif %}
-
+           
           </div>
         </div>
       </div>

@@ -90,12 +90,21 @@ class ApplyFixedDepositView(LoginRequiredMixin, TemplateView):
 class FixedDepositsHistoryView(LoginRequiredMixin, TemplateView):
     template_name = 'dashboard/history.html'
     
-class AutomaticDepositView(LoginRequiredMixin, TemplateView):
-    template_name = 'dashboard/automatic-deposit.html'
+class AutomaticDepositView(LoginRequiredMixin, View):
     
-
-class ManualDepositView(LoginRequiredMixin, TemplateView):
-    template_name = 'dashboard/manual-methods.html'   
+    def get(self, request):
+        try:
+            client = Client(api_key=settings.COINBASE_COMMERCE_API_KEY)
+            deposit_checkout = client.checkout.retrieve(settings.COINBASE_CHECKOUT_ID_DEPOSIT)
+            deposit_checkout_link = f'https://commerce.coinbase.com/checkout/{deposit_checkout.id}'
+            
+            return render(request, 'dashboard/automatic-deposit.html', {
+                'deposit_checkout_link': deposit_checkout_link,
+            })
+        except Exception:
+            messages.error(request, 'Connectivity while Error loading DPS plans')
+            return redirect('dashboard')
+      
     
 class WithdrawalFormView(UserVerifiedMixin, CreateView):
     template_name = 'dashboard/withdraw-money.html'

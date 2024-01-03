@@ -32,7 +32,7 @@ def send_confirmation_email(sender, instance, created, **kwargs) -> None:
 @receiver(post_save, sender=get_user_model())
 def send_welcome_email(sender, instance, created, **kwargs) -> None:
     if created:
-        subject = "Welcome to FinexFinance"
+        subject = "Welcome to UvestFinance"
         # render email html
         message = render_to_string('authentication/welcome.html', {
             'first_name': instance.first_name,

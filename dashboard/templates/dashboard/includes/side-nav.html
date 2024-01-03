@@ -34,23 +34,10 @@
                          Active Cards
                     </a>
 
-
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#deposit"
-                        aria-expanded="false" aria-controls="collapseLayouts">
+                    <a class="nav-link" href="{% url 'automatic-deposit' %}">
                         <div class="sb-nav-link-icon"><i class="fa fa-plus-circle"></i></div>
                         Deposit Money
-                        <div class="sb-sidenav-collapse-arrow"><i class="fa fa-long-arrow-down"></i></div>
                     </a>
-                    <div class="collapse" id="deposit" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link"
-                                href="{% url 'automatic-deposit' %}">Automatic
-                                Deposit</a>
-
-                            <a class="nav-link" href="{% url 'manual-methods' %}">Manual
-                                Deposit</a>
-                        </nav>
-                    </div>
 
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#loans"
                         aria-expanded="false" aria-controls="collapseLayouts">
