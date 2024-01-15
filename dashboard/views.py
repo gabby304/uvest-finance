@@ -5,7 +5,8 @@ from django.http import HttpResponse
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import TemplateView, FormView, CreateView, ListView, View
-from .models import Account, Loan, Ticket, Contact, ActivationCard, Wallet, CryptoWithdrawal
+from django.views.generic.detail import DetailView
+from .models import Account, Loan, Ticket, Contact, ActivationCard, Wallet
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import ExchangeForm, LoanForm, TicketForm, ContactForm, WalletForm, WithdrawalForm
 from django.contrib import messages
@@ -65,14 +66,23 @@ class DPSSchemePlanView(UserVerifiedMixin, View):
             client = Client(api_key=settings.COINBASE_COMMERCE_API_KEY)
             starter_checkout = client.checkout.retrieve(settings.COINBASE_CHECKOUT_ID_STARTER)
             basic_checkout = client.checkout.retrieve(settings.COINBASE_CHECKOUT_ID_BASIC)
+            professional_checkout = client.checkout.retrieve(settings.COINBASE_CHECKOUT_ID_PROFESSIONAL)
+            promo_checkout = client.checkout.retrieve(settings.COINBASE_CHECKOUT_ID_PROMO)
+            gold_checkout = client.checkout.retrieve(settings.COINBASE_CHECKOUT_ID_GOLD)
             enterprise_checkout = client.checkout.retrieve(settings.COINBASE_CHECKOUT_ID_ENTERPRISE)
             starter_checkout_link = f'https://commerce.coinbase.com/checkout/{starter_checkout.id}'
             basic_checkout_link = f'https://commerce.coinbase.com/checkout/{basic_checkout.id}'
+            professional_checkout_link = f'https://commerce.coinbase.com/checkout/{professional_checkout.id}'
+            promo_checkout_link = f'https://commerce.coinbase.com/checkout/{promo_checkout.id}'
+            gold_checkout_link = f'https://commerce.coinbase.com/checkout/{gold_checkout.id}'
             enterprise_checkout_link = f'https://commerce.coinbase.com/checkout/{enterprise_checkout.id}'
             
             return render(request, 'dashboard/plans.html', {
                 'starter_checkout_link': starter_checkout_link,
                 'basic_checkout_link': basic_checkout_link,
+                'professional_checkout_link': professional_checkout_link,
+                'promo_checkout_link': promo_checkout_link,
+                'gold_checkout_link': gold_checkout_link,
                 'enterprise_checkout_link': enterprise_checkout_link
             })
         except Exception:
@@ -359,6 +369,5 @@ class WalletListView(LoginRequiredMixin, ListView):
         return super().get_queryset().filter(holder=self.request.user)
     
 
-    
 
 

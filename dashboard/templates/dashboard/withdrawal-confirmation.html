@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Withdrawal Request Confirmation - UvestFinance</title>
+</head>
+<body>
+
+  <div>
+    
+    <p>Dear {{ first_name }} {{ last_name }},</p>
+    
+    <p>We hope this email finds you well. Thank you for choosing UvestFinance for your investment needs.</p>
+    
+    <p>We have received your recent request to withdraw profits from your investment account. We appreciate your trust in our platform and are committed to ensuring a smooth and efficient process for your withdrawal.</p>
+    
+    <p>Here are the details of your withdrawal request:</p>
+    
+    <ul>
+      <li><strong>Amount:</strong> {{ amount }}</li>
+      <li><strong>Crypto-Currency:</strong> {{ wallet.crypto }}</li>
+      <li><strong>Wallet Address:</strong> {{ wallet.address }}</li>
+    </ul>
+    
+    <p>Please review the information above to ensure its accuracy. If there are any discrepancies or if you need to make changes, kindly reply to our customer support below as soon as possible.</p>
+    
+    <p>Once you confirm the details, our team will initiate the withdrawal process. Please note that withdrawals may take some time to be completed, depending on the current transaction volume.</p>
+    
+    <p>For security purposes, please ensure that the withdrawal details match the information you provided during the initial setup of your account. If you have any concerns or questions, feel free to reach out to our customer support team at support@uvestfinance.com.</p>
+    
+    <p>Thank you for choosing UvestFinance. We appreciate your business, and we look forward to continuing to serve you.</p>
+    
+    <p>Best regards,</p>
+    UvestFinance Customer Support<br>
+    support@uvestfinance.com</p>
+  </div>
+
+</body>
+</html>
