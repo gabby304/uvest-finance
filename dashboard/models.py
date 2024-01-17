@@ -255,8 +255,15 @@ class Wallet(models.Model):
     
 
 class CryptoWithdrawal(models.Model):
+    
+    class Currency(models.TextChoices):
+        USD = 'USD', 'USD'
+        EUR = 'EUR', 'EUR'
+        INR = 'INR', 'INR'
+        
     id = ShortUUIDField(primary_key=True, max_length=6, editable=False)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    currency = models.CharField(max_length=10, choices=Currency.choices, default=Currency.USD)
     amount = models.DecimalField(max_digits=20, decimal_places=8)
     wallet = models.ForeignKey(Wallet, on_delete=models.PROTECT)
     withdrawal_date = models.DateTimeField(auto_now_add=True)

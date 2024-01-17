@@ -258,7 +258,9 @@
 
 		{% block add-wallet %} {% endblock add-wallet %}
 
-		{% block withdraw-money %} {% endblock withdraw-money %}
+		{% block withdraw-money %} {% endblock withdraw-money %} 
+
+		{% block withdrawal-history %} {% endblock withdrawal-history  %}
 
 		{% block loan %} {% endblock loan %}
 
@@ -304,6 +306,7 @@
 	<script src="{% static 'public/backend/assets/js/scripts.js' %}"></script>
 	<script src="{% static 'public/backend/assets/js/exchange.js' %}"></script>
 	<script src="{% static 'public/backend/assets/js/accountStorage.js' %}"></script>
+	<script src="{% static 'public/backend/assets/js/withdraw.js' %}"></script>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"></script>
 	<!-- Alerts -->

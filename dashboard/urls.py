@@ -26,6 +26,7 @@ from .views import (
     CardListView,
     WalletFormView,
     WalletListView,
+    WithdrawalHistoryView,
     success_view,
     cancel_view,
 )
@@ -51,6 +52,7 @@ urlpatterns = [
     path('customer/active-cards/', CardListView.as_view(), name='active-cards'),
     path('customer/wallets/add/', WalletFormView.as_view(), name='add-wallet'),
     path('customer/wallets/', WalletListView.as_view(), name='my-wallets'),
+    path('customer/withdraw-history/', WithdrawalHistoryView.as_view(), name='withdrawal-history'),
     path('services/', ServiceView.as_view(), name='services'),
     path('about/', AboutView.as_view(), name='about'),
     path('contact/', ContactView.as_view(), name='contact'),

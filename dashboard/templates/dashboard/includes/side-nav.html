@@ -113,10 +113,20 @@
                                 Wallets</a>
                         </nav>
                     </div>
-                    <a class="nav-link" href="{% url 'withdrawal' %}">
+
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#withdrawal"
+                        aria-expanded="false" aria-controls="collapseLayouts">
                         <div class="sb-nav-link-icon"><i class="fa fa-money"></i></div>
-                         Withdrawal
+                        Withdrawal
+                        <div class="sb-sidenav-collapse-arrow"><i class="fa fa-long-arrow-down"></i></div>
                     </a>
+                    <div class="collapse" id="withdrawal" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" href="{% url 'withdrawal' %}">Withdraw Funds
+                                </a>
+                            <a class="nav-link" href="{% url 'withdrawal-history' %}">Withdrawal History</a>
+                        </nav>
+                    </div>
                     <a class="nav-link" href="{% url 'transaction-report' %}">
                         <div class="sb-nav-link-icon"><i class="fa fa-pie-chart"></i></div>
                         Transactions Report

@@ -6,7 +6,7 @@ from django.http.response import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import TemplateView, FormView, CreateView, ListView, View
 from django.views.generic.detail import DetailView
-from .models import Account, Loan, Ticket, Contact, ActivationCard, Wallet
+from .models import Account, Loan, Ticket, Contact, ActivationCard, Wallet, CryptoWithdrawal
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import ExchangeForm, LoanForm, TicketForm, ContactForm, WalletForm, WithdrawalForm
 from django.contrib import messages
@@ -369,5 +369,12 @@ class WalletListView(LoginRequiredMixin, ListView):
         return super().get_queryset().filter(holder=self.request.user)
     
 
+class WithdrawalHistoryView(LoginRequiredMixin, ListView):
+    model = CryptoWithdrawal
+    template_name = 'dashboard/withdrawal-history.html'
+    context_object_name = 'withdrawals'
+    
+    def get_queryset(self) -> QuerySet[CryptoWithdrawal]:
+        return super().get_queryset().filter(user=self.request.user)
 
 

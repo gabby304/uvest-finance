@@ -5,7 +5,7 @@
 {% endblock side-nav %}
 
 
-{% block loan %}
+{% block withdrawal-history  %}
   
 <div id="layoutSidenav_content">
   <main>
@@ -32,11 +32,11 @@
           <div
             class="card-header d-flex justify-content-between align-items-center"
           >
-            <span class="panel-title">My Loans</span>
+            <span class="panel-title">My Withdrawals</span>
             <a
               class="btn btn-primary btn-sm float-right"
               href="{% url 'apply-loan' %}"
-              ><i class="fa fa-plus-circle"></i> Apply Loan</a
+              ><i class="fa fa-plus-circle"></i> Withdraw Funds</a
             >
           </div>
 
@@ -44,29 +44,34 @@
             <table id="loans_table" class="table table-bordered data-table">
               <thead>
                 <tr>
-                  <th>Loan ID</th>
-                  <th>Loan Product</th>
+                  <th>Withdrawal ID</th>
                   <th>Currency</th>
-                  <th class="text-right">Applied Amount</th>
-                  <th class="text-right">Total Payable</th>
-                  <th class="text-right">Amount Paid</th>
-                  <th class="text-right">Due Amount</th>
-                  <th>Release Date</th>
+                  <th class="text-right">Amount</th>
+                  <th class="text-right">Wallet</th>
+                  <th class="text-right">Crypto-Currency</th>
+                  <th class="text-right">Address</th>
+                  <th>Withdrawal Date</th>
                   <th>Status</th>
                 </tr>
               </thead>
               <tbody>
-                {% for loan in loans %}
+                {% for withdrawal in withdrawals %}
                   <tr>
-                    <td>{{ loan.pk }}</td>
-                    <td>{{ loan.loan_type }}</td>
-                    <td>{{ loan.currency }}</td>
-                    <td>{{ loan.amount }}</td>
-                    <td>{{ loan.amount }}</td>
-                    <td>{{ loan.amount_paid }}</td>
-                    <td>{{ loan.balance }}</td>
-                    <td>{{ loan.created_at }}</td>
-                    <td>{{ loan.status }}</td>
+                    <td>{{ withdrawal.pk }}</td>
+                    <td>{{ withdrawal.currency }}</td>
+                    <td>{{ withdrawal.amount }}</td>
+                    <td>{{ withdrawal.wallet.wallet_name }}</td>
+                    <td>{{ withdrawal.wallet.crypto }}</td>
+                    <td>{{ withdrawal.wallet.address }}</td>
+                    <td>{{ withdrawal.withdrawal_date }}</td>
+                    <td><button type="button" class="btn {% if withdrawal.status == 'Pending' %}
+                      btn-warning
+                    {% elif withdrawal.status == 'Completed' %}
+                      btn-success
+                    {% else %}
+                      btn-danger
+                    {% endif %}
+                    ">{{ withdrawal.status }}</button></td>
                   </tr>
                 {% endfor %}
               </tbody>
@@ -78,4 +83,4 @@
   </main>
 </div>
 <!--End layoutSidenav_content-->
-{% endblock loan %}
+{% endblock withdrawal-history  %}

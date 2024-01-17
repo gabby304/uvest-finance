@@ -6,6 +6,11 @@
 
 
 {% block withdraw-money %}
+<style>
+   #balanceCheck {
+    visibility: hidden;
+  }
+</style>
 
 <div id="layoutSidenav_content">
   <main>
@@ -33,7 +38,20 @@
               <!-- input-group.// -->
             </div>
             <div class="form-group">
-              <label for="username">Amount in dollars</label>
+              <label class="control-label">Currency</label>
+              <select
+                class="form-control currency_select"
+                name="currency"
+                id="currency"
+                required
+              >
+                <option>USD</option>
+                <option>EUR</option>
+                <option>INR</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="username">Amount</label>
               <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text"
@@ -45,9 +63,11 @@
                   class="form-control"
                   name="amount"
                   min="100"
+                  id="withdrawAmount"
                   required
                 />
               </div>
+              <span id="balanceCheck" class="text-danger">Insufficient balance in this currency account</span>
               <!-- input-group.// -->
             </div>
             <!-- form-group.// -->
@@ -71,7 +91,7 @@
               <!-- input-group.// -->
             </div>
             <!-- form-group.// -->
-            <button class="subscribe btn btn-primary btn-block" type="submit">
+            <button class="subscribe btn btn-primary btn-block" type="submit" id="submitWithdrawal">
               Confirm
             </button>
           </form>
