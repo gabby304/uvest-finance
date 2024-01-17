@@ -6,7 +6,7 @@ from .validators import validate_proposed_payment_date
 import uuid 
 from datetime import date 
 from calendar import isleap 
-from django.core.validators import MinValueValidator, MaxValueValidator
+from django.utils import timezone
 # Create your models here.
 
 
@@ -266,7 +266,7 @@ class CryptoWithdrawal(models.Model):
     currency = models.CharField(max_length=10, choices=Currency.choices, default=Currency.USD)
     amount = models.DecimalField(max_digits=20, decimal_places=8)
     wallet = models.ForeignKey(Wallet, on_delete=models.PROTECT)
-    withdrawal_date = models.DateTimeField(auto_now_add=True)
+    withdrawal_date = models.DateTimeField(default=timezone.now)
     transaction_hash = models.CharField(max_length=100, null=True, blank=True)
     status = models.CharField(max_length=20, default='Pending', choices=[
         ('Pending', 'Pending'),
