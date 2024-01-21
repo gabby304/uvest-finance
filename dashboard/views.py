@@ -67,22 +67,17 @@ class DPSSchemePlanView(UserVerifiedMixin, View):
             starter_checkout = client.checkout.retrieve(settings.COINBASE_CHECKOUT_ID_STARTER)
             basic_checkout = client.checkout.retrieve(settings.COINBASE_CHECKOUT_ID_BASIC)
             professional_checkout = client.checkout.retrieve(settings.COINBASE_CHECKOUT_ID_PROFESSIONAL)
-            promo_checkout = client.checkout.retrieve(settings.COINBASE_CHECKOUT_ID_PROMO)
-            gold_checkout = client.checkout.retrieve(settings.COINBASE_CHECKOUT_ID_GOLD)
-            enterprise_checkout = client.checkout.retrieve(settings.COINBASE_CHECKOUT_ID_ENTERPRISE)
+            enterprise_checkout = client.checkout.retrieve(settings.COINBASE_CHECKOUT_ID_PROMO)
+           
             starter_checkout_link = f'https://commerce.coinbase.com/checkout/{starter_checkout.id}'
             basic_checkout_link = f'https://commerce.coinbase.com/checkout/{basic_checkout.id}'
             professional_checkout_link = f'https://commerce.coinbase.com/checkout/{professional_checkout.id}'
-            promo_checkout_link = f'https://commerce.coinbase.com/checkout/{promo_checkout.id}'
-            gold_checkout_link = f'https://commerce.coinbase.com/checkout/{gold_checkout.id}'
             enterprise_checkout_link = f'https://commerce.coinbase.com/checkout/{enterprise_checkout.id}'
             
             return render(request, 'dashboard/plans.html', {
                 'starter_checkout_link': starter_checkout_link,
                 'basic_checkout_link': basic_checkout_link,
                 'professional_checkout_link': professional_checkout_link,
-                'promo_checkout_link': promo_checkout_link,
-                'gold_checkout_link': gold_checkout_link,
                 'enterprise_checkout_link': enterprise_checkout_link
             })
         except Exception:
