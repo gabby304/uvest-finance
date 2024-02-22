@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     # local apps
     'authentication',
     'dashboard',
+    'employment',
     
     # third-party apps
     'phonenumber_field',

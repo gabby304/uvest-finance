@@ -1,0 +1,35 @@
+{% extends "base.html" %} 
+{% load static %} 
+
+{% block title %}
+<title>Careers</title>
+{% endblock title %}
+
+{% block apply-success %}
+{% include "dashboard/includes/navbar.html" %} 
+<div class="d-flex align-items-center justify-content-center mt-5">
+    <div class="box success w-50 text-center">
+        <span>Your response has been submitted, you will receive an email shortly</span>
+    </div>
+</div>
+
+<style>
+.box{
+  background: #fff;
+  display: inline;
+  width: 300px;
+  padding: 10px;
+  margin: auto;
+  margin-left: 30px;
+  margin-right: 30px;
+  font-size: 18px
+}
+
+.success{
+  border: 1px solid #2E7D32;
+  border-left: 5px solid #2E7D32; 
+  background: #ebf9ef;
+  color: #2E7D32
+}
+</style>
+{% endblock apply-success %}

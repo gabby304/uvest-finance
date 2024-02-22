@@ -5,7 +5,6 @@ from django.http import HttpResponse
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import TemplateView, FormView, CreateView, ListView, View
-from django.views.generic.detail import DetailView
 from .models import Account, Loan, Ticket, Contact, ActivationCard, Wallet, CryptoWithdrawal
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import ExchangeForm, LoanForm, TicketForm, ContactForm, WalletForm, WithdrawalForm

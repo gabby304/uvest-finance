@@ -1,0 +1,431 @@
+{% extends "base.html" %} 
+{% load static %} 
+
+{% block title %}
+<title>Careers</title>
+{% endblock title %}
+
+
+{% block career-list %}
+{% include "dashboard/includes/navbar.html" %} 
+
+<div class="content-container">
+	
+	<article class="job-listing" itemscope itemtype="https://schema.org/JobPosting">
+
+		<header class="job-listing-header">
+
+			<div class="job-listing-header__banner">
+				<span>Summary</span>
+			</div>
+
+			<div class="job-listing-header__content">
+
+				<div class="job-listing-header__company-logo">
+					<img src="http://via.placeholder.com/128" alt="Logo Alt" itemprop="image">
+				</div>
+
+				<div class="job-listing-header__job-details">
+					<div class="job-listing-header__job-details-top">
+						<h1 class="job-listing-header__job-title" itemprop="title">{{ job_post.title }}</h1>
+						
+						<span class="job-listing-header__company-name" itemprop="hiringOrganization">
+							UvestFinance
+						</span>
+						<span class="job-listing-header__date-posted">Posted 3 days ago</span>
+					</div>
+					<div class="job-listing-header__job-details-middle">
+						<table class="job-listing-header__mata-table">
+							<tr itemprop="baseSalary" itemscope itemtype="http://schema.org/MonetaryAmount">
+								<th>Salary</th>
+								<td>
+									<span class="sr-only" itemprop="currency">USD</span>
+									<span itemprop="value">{{ job_post.salary }} (depending on experience)<span>
+								</td>
+							</tr>
+							<tr>
+								<th>Benefits</th>
+								<td itemprop="jobBenefits">{{ job_post.benefits }}</td>
+							</tr>
+							<tr itemprop="jobLocation" itemscope itemtype="http://schema.org/Place">
+								<th>Location</th>
+								<td itemprop="address">
+                                    {% if job_post.is_remote %}
+                                      Remote - {{ job_post.location }}
+                                    {% endif %}
+                                </td>
+							</tr>
+							<tr>
+								<th>Type</th>
+								<td itemprop="employmentType">{{ job_post.type }}</td>
+							</tr>
+						</table>
+					</div>
+					<div class="job-listing-header__job-details-bottom">
+						<a href="{% url 'apply-job' job_post.pk %}" class="btn btn-apply">Apply Now</a>
+					</div>
+				</div>
+
+			</div>
+
+		</header>
+
+		<section class="job-listing__job-description" itemprop="description">
+
+			<h2 class="job-listing__job-description-title">Job Description</h2>
+            <p>
+                {{ job_post.description }}
+            </p>
+
+            <p>
+                {{ job_post.requirements }}
+            </p>
+
+            <p>
+                {{ job_post.responsibilities }}
+            </p>
+
+			<!-- <p>Our client is a family owned Automotive Retail Group who are looking for an experienced Car Sales Executive to join their established, busy site in Bolton. Selling both new and used vehicles, you will be responsible for delivering excellent customer service with a trusted and well-known franchise.</p>
+			<p><strong>Job Title &amp; Location:</strong></p>
+			<p>Car Sales Executive in Bolton.</p>
+			<p><strong>Salary &amp; Benefits:</strong></p>
+			<p>£15,000 basic salary plus commission, OTE £30,000 upwards (uncapped,) plus company car.</p>
+			<p><strong>Type of Role:</strong></p>
+			<p>This is a full-time permanent role working to a rota that includes weekends and late nights.</p>
+			<p><strong>Key Tasks and Responsibilities:</strong></p>
+			<ul>
+				<li>Following the Sales Process.</li>
+				<li>Contacting existing customers and making appointments.</li>
+				<li>Presenting and demonstrating vehicles to customers.</li>
+				<li>Carrying out part exchange appraisals.</li>
+				<li>Negotiating the sale working closely with the Sales Manager.</li>
+				<li>Handover and delivery of vehicles to customers.</li>
+				<li>Achievement of sales targets and objectives.</li>
+			</ul>
+			<p><strong>Skills and Experience Required:</strong></p>
+			<p>It is essential that you have experience within an automotive sales environment for a minimum of 12 months, a stable career history and a full valid driving licence. Experience with a volume franchise is preferred but not essential.</p>
+			<p>The ideal candidate will have an energetic and friendly approach to customers, be of smart personal appearance, have the ability to deliver sales targets and have a strong work ethic with the drive and determination to succeed and progress their career.</p>
+			<p><strong>How to Apply:</strong></p>
+			<p>Apply by submitting your CV online and in absolute confidence ensuring we have all your contact details including mobile telephone number and personal e-mail address.</p>
+			<p>Please note that as a member of the IOR (Institute of Recruiters) we never forward CV's to clients without having fully discussed the role with you and gained your permission to do so.</p>
+			<p>Should you not have been contacted within 5 days you can assume on this occasion you have been unsuccessful.</p> -->
+
+		</section>
+
+	</article>
+
+	<aside class="job-listing-sidebar">
+
+		<section class="sidebar-widget">
+			<h3 class="sidebar-widget__title">Quick Actions</h3>
+			<div class="sidebar-widget__quick-actions">
+				<!-- Back to prev page link -->
+				<a href="{% url 'careers' %}" class="sidebar-widget__quick-actions-prev-page">Back to - Careers<span></span></a>
+			</div>
+		</section>
+		
+		<section class="sidebar-widget">
+			<h3 class="sidebar-widget__title">Related Jobs</h3>
+			<ul class="sidebar-widget__related-jobs">
+                {% for job in related_jobs %}      
+                    <li class="sidebar-widget__related-job">
+                        <a href="#" class="sidebar-widget__related-job--link">
+                            <h4 class="sidebar-widget__related-job-title">{{ job.title }}</h4>
+                            <span class="sidebar-widget__related-job-location">
+                                {% if job_post.is_remote %}
+                                      Remote - {{ job_post.location }}
+                                {% endif %}
+                            </span>
+                            <span class="sidebar-widget__related-job-date">Posted 1 day ago</span>
+                        </a>
+                    </li>
+                {% endfor %}
+			</ul>
+		</section>
+
+	</aside>
+	
+</div>
+
+
+
+<style>
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+body {
+  color: #084255;
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.4;
+}
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  color: #073B4C;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.1;
+}
+.content-container {
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (min-width: 768px) {
+  .content-container {
+    max-width: 736px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media screen and (min-width: 1140px) {
+  .content-container {
+    flex-direction: row;
+    max-width: 1200px;
+  }
+}
+.job-listing, .job-listing-sidebar {
+  padding-top: 32px;
+  padding-bottom: 32px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+@media screen and (min-width: 1140px) {
+  .job-listing {
+    max-width: 70%;
+    min-width: 70%;
+  }
+}
+@media screen and (min-width: 1140px) {
+  .job-listing-sidebar {
+    max-width: 30%;
+    min-width: 30%;
+  }
+}
+.job-listing-header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+@media screen and (min-width: 576px) {
+  .job-listing-header {
+    flex-direction: row;
+  }
+}
+.job-listing-header__banner {
+  position: relative;
+  min-width: 48px;
+  padding: 16px;
+  color: #FFFFFF;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background-color: #073B4C;
+  -webkit-font-smoothing: antialiased;
+}
+@media screen and (min-width: 576px) {
+  .job-listing-header__banner {
+    padding: 0;
+  }
+}
+@media screen and (min-width: 576px) {
+  .job-listing-header__banner span {
+    position: absolute;
+    bottom: 0;
+    left: 16px;
+    line-height: 1;
+    transform: rotate(-90deg);
+    transform-origin: 0 0;
+  }
+}
+.job-listing-header__content {
+  display: flex;
+  flex-direction: column;
+  min-width: calc(100% - 48px);
+  padding: 16px;
+}
+@media screen and (min-width: 768px) {
+  .job-listing-header__content {
+    flex-direction: row;
+  }
+}
+.job-listing-header__company-logo {
+  margin-bottom: 16px;
+}
+@media screen and (min-width: 768px) {
+  .job-listing-header__company-logo {
+    margin-bottom: 0;
+    align-self: center;
+  }
+}
+@media screen and (min-width: 768px) {
+  .job-listing-header__job-details {
+    width: 100%;
+    padding-left: 16px;
+  }
+}
+.job-listing-header__job-details-top {
+  min-width: 100%;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #EDEFF2;
+}
+@media screen and (min-width: 768px) {
+  .job-listing-header__job-details-top {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+.job-listing-header__job-details-middle {
+  margin-top: 16px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #EDEFF2;
+}
+.job-listing-header__job-title {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+@media screen and (min-width: 768px) {
+  .job-listing-header__job-title {
+    width: 100%;
+    font-size: 32px;
+  }
+}
+.job-listing-header__company-name {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: bold;
+}
+@media screen and (min-width: 768px) {
+  .job-listing-header__company-name {
+    margin-bottom: 0;
+    font-size: 18px;
+  }
+}
+.job-listing-header__company-name span {
+  color: rgba(7, 59, 76, 0.6);
+  font-weight: normal;
+}
+.job-listing-header__date-posted {
+  display: block;
+  font-size: 14px;
+  font-style: italic;
+}
+@media screen and (min-width: 768px) {
+  .job-listing-header__date-posted {
+    margin-left: auto;
+    align-self: flex-end;
+  }
+}
+.job-listing-header__mata-table {
+  text-align: left;
+}
+.job-listing-header__mata-table th, .job-listing-header__mata-table td {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  vertical-align: middle;
+}
+.job-listing-header__mata-table td {
+  padding-left: 8px;
+}
+.job-listing-header__job-details-bottom {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 16px;
+}
+.job-listing__job-description {
+  padding: 16px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+.job-listing__job-description-title {
+  margin-left: - 16px;
+  margin-right: - 16px;
+  margin-top: - 16px;
+  padding: 16px;
+  color: #FFFFFF;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background-color: #073B4C;
+}
+.sidebar-widget {
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+  margin-bottom: 32px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+.sidebar-widget__title {
+  margin-bottom: 0;
+  padding: 16px;
+  font-size: 16px;
+  text-transform: uppercase;
+  background-color: #EDEFF2;
+}
+.sidebar-widget__related-jobs {
+  margin: 0;
+  padding: 16px;
+  list-style: none;
+}
+.sidebar-widget__related-job:not(:last-of-type) {
+  padding-bottom: 16px;
+  border-bottom: 2px solid #EDEFF2;
+}
+.sidebar-widget__related-job:not(:first-of-type) {
+  padding-top: 16px;
+}
+.sidebar-widget__related-job--link {
+  display: flex;
+  flex-direction: column;
+  color: #073B4C;
+  text-decoration: none;
+}
+.sidebar-widget__related-job-title {
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+.sidebar-widget__related-job-company {
+  font-weight: bold;
+}
+.sidebar-widget__related-job-company, .sidebar-widget__related-job-location {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+.sidebar-widget__related-job-date {
+  font-size: 14px;
+  font-style: italic;
+}
+.sidebar-widget__quick-actions a {
+  display: block;
+  padding: 16px;
+  color: #0CAADC;
+  text-decoration: none;
+}
+.btn-apply {
+  display: inline-block;
+  padding: 16px 24px;
+  color: #FFFFFF;
+  font-size: 16px;
+  text-decoration: none;
+  background-color: #56D39B;
+  border-radius: 100px;
+}
+.btn-apply:hover, .btn-apply:focus {
+  background-color: #46cf91;
+}
+.sr-only {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px !important;
+  overflow: hidden;
+  padding: 0 !important;
+  position: absolute !important;
+  white-space: nowrap !important;
+  width: 1px !important;
+}
+    
+</style>
+
+{% include "dashboard/includes/footer.html" %}
+{% endblock career-list %}
