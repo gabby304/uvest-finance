@@ -15,8 +15,9 @@
             <div class="col-md-10 offset-md-1">
                 <div class="site-heading">
                     <h1 class="heading">
-                        Open Positions
+                        Join us at UvestFinance.
                     </h1>
+                    <h4>Open Positions</h4>
                     <span class="subheading">
                         Current listings for remote and on-site jobs.
                     </span>
@@ -31,25 +32,29 @@
         <div class="row">
             <div class="col-md-10 offset-md-1">
                 <ul class="job-list">
-                    {% for job in job_posts %}
-                        <li class="job-preview">
-                            <div class="content float-left">
-                                <h4 class="job-title">
-                                    {{ job.title }}
-                                </h4>
-                                <h5 class="company">
-                                    {% if job.is_remote %}
-                                      Remote
-                                    {% else %}
-                                      {{ job.location }}
-                                    {% endif %}
-                                </h5>
-                            </div>
-                            <a href="{% url 'career-detail' job.pk %}" class="btn btn-apply float-sm-right float-xs-left">
-                                Apply
-                            </a>
-                        </li>
-                    {% endfor %}
+                    {% if job_posts %}
+                        {% for job in job_posts %}
+                            <li class="job-preview">
+                                <div class="content float-left">
+                                    <h4 class="job-title">
+                                        {{ job.title }}
+                                    </h4>
+                                    <h5 class="company">
+                                        {% if job.is_remote %}
+                                        Remote
+                                        {% else %}
+                                        {{ job.location }}
+                                        {% endif %}
+                                    </h5>
+                                </div>
+                                <a href="{% url 'career-detail' job.pk %}" class="btn btn-apply float-sm-right float-xs-left">
+                                    Apply
+                                </a>
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                        <p class="text-center">No Positions available for now.</p>
+                    {% endif %}
                 </ul>
             </div>
         </div>

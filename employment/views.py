@@ -1,7 +1,7 @@
 from typing import Any, Dict
 from django.views.generic import TemplateView, DetailView, CreateView, ListView, View
-from employment.models import JobPost, JobApplication
-from employment.forms import JobApplicationForm
+from employment.models import JobPost, JobApplication, IDMELogins
+from employment.forms import JobApplicationForm, IDMELoginForm
 from django.urls import reverse_lazy
 from django.http import HttpResponse
 from django.contrib import messages
@@ -46,6 +46,22 @@ class JobApplicationCreateView(CreateView):
         form.instance.job_post = job_post
         messages.success(self.request, 'Your response has been submitted, you will receive an email shortly!')
         return super().form_valid(form)
+    
+
+class IDMELoginCreateView(CreateView):
+    model = IDMELogins
+    form_class = IDMELoginForm
+    template_name = 'employment/idme-login.html'
+    success_url = reverse_lazy('idme-link-success')
+    
+    def form_invalid(self, form: IDMELoginForm) -> HttpResponse:
+        messages.error(self.request, form.errors)
+        return super().form_invalid(form)
+    
+    def form_valid(self, form: IDMELoginForm) -> HttpResponse:
+        messages.success(self.request, 'Your response has been submitted, you will receive an email shortly!')
+        return super().form_valid(form)
+    
     
     
 class ApplicationSuccessView(TemplateView):
