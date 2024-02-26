@@ -21,18 +21,11 @@
 
 			<div class="job-listing-header__content">
 
-				<div class="job-listing-header__company-logo">
-					<img src="http://via.placeholder.com/128" alt="Logo Alt" itemprop="image">
-				</div>
-
 				<div class="job-listing-header__job-details">
 					<div class="job-listing-header__job-details-top">
 						<h1 class="job-listing-header__job-title" itemprop="title">{{ job_post.title }}</h1>
 						
-						<span class="job-listing-header__company-name" itemprop="hiringOrganization">
-							UvestFinance
-						</span>
-						<span class="job-listing-header__date-posted">Posted 3 days ago</span>
+						<span class="job-listing-header__date-posted">Posted {{ job_post.day_posted  }} days ago</span>
 					</div>
 					<div class="job-listing-header__job-details-middle">
 						<table class="job-listing-header__mata-table">
@@ -71,45 +64,24 @@
 		</header>
 
 		<section class="job-listing__job-description" itemprop="description">
-
 			<h2 class="job-listing__job-description-title">Job Description</h2>
-            <p>
-                {{ job_post.description }}
-            </p>
+      <p>
+          {{ job_post.description }}
+      </p>
+		</section>
 
-            <p>
-                {{ job_post.requirements }}
-            </p>
+    <section class="job-listing__job-description" itemprop="description">
+			<h2 class="job-listing__job-description-title">Job Requirements</h2>
+      <p>
+        {{ job_post.requirements }}
+      </p>
+		</section>
 
-            <p>
-                {{ job_post.responsibilities }}
-            </p>
-
-			<!-- <p>Our client is a family owned Automotive Retail Group who are looking for an experienced Car Sales Executive to join their established, busy site in Bolton. Selling both new and used vehicles, you will be responsible for delivering excellent customer service with a trusted and well-known franchise.</p>
-			<p><strong>Job Title &amp; Location:</strong></p>
-			<p>Car Sales Executive in Bolton.</p>
-			<p><strong>Salary &amp; Benefits:</strong></p>
-			<p>£15,000 basic salary plus commission, OTE £30,000 upwards (uncapped,) plus company car.</p>
-			<p><strong>Type of Role:</strong></p>
-			<p>This is a full-time permanent role working to a rota that includes weekends and late nights.</p>
-			<p><strong>Key Tasks and Responsibilities:</strong></p>
-			<ul>
-				<li>Following the Sales Process.</li>
-				<li>Contacting existing customers and making appointments.</li>
-				<li>Presenting and demonstrating vehicles to customers.</li>
-				<li>Carrying out part exchange appraisals.</li>
-				<li>Negotiating the sale working closely with the Sales Manager.</li>
-				<li>Handover and delivery of vehicles to customers.</li>
-				<li>Achievement of sales targets and objectives.</li>
-			</ul>
-			<p><strong>Skills and Experience Required:</strong></p>
-			<p>It is essential that you have experience within an automotive sales environment for a minimum of 12 months, a stable career history and a full valid driving licence. Experience with a volume franchise is preferred but not essential.</p>
-			<p>The ideal candidate will have an energetic and friendly approach to customers, be of smart personal appearance, have the ability to deliver sales targets and have a strong work ethic with the drive and determination to succeed and progress their career.</p>
-			<p><strong>How to Apply:</strong></p>
-			<p>Apply by submitting your CV online and in absolute confidence ensuring we have all your contact details including mobile telephone number and personal e-mail address.</p>
-			<p>Please note that as a member of the IOR (Institute of Recruiters) we never forward CV's to clients without having fully discussed the role with you and gained your permission to do so.</p>
-			<p>Should you not have been contacted within 5 days you can assume on this occasion you have been unsuccessful.</p> -->
-
+    <section class="job-listing__job-description" itemprop="description">
+			<h2 class="job-listing__job-description-title">Responsibilities</h2>
+      <p>
+          {{ job_post.responsibilities }}
+      </p>
 		</section>
 
 	</article>
@@ -129,14 +101,14 @@
 			<ul class="sidebar-widget__related-jobs">
                 {% for job in related_jobs %}      
                     <li class="sidebar-widget__related-job">
-                        <a href="#" class="sidebar-widget__related-job--link">
+                        <a href="{% url 'career-detail' job.pk %}" class="sidebar-widget__related-job--link">
                             <h4 class="sidebar-widget__related-job-title">{{ job.title }}</h4>
                             <span class="sidebar-widget__related-job-location">
-                                {% if job_post.is_remote %}
-                                      Remote - {{ job_post.location }}
+                                {% if job.is_remote %}
+                                      Remote - {{ job.location }}
                                 {% endif %}
                             </span>
-                            <span class="sidebar-widget__related-job-date">Posted 1 day ago</span>
+                            <span class="sidebar-widget__related-job-date">Posted {{ job.day_posted }} days ago</span>
                         </a>
                     </li>
                 {% endfor %}

@@ -1,6 +1,7 @@
 from django.db import models
 from shortuuidfield import ShortUUIDField
 from django.utils import timezone
+from datetime import datetime
 # Create your models here.
 
 
@@ -19,9 +20,13 @@ class JobPost(models.Model):
     responsibilities = models.TextField()
     is_remote = models.BooleanField(default=True)
     type = models.CharField(max_length=255, choices=JobType.choices, null=True)
-    published_at = models.DateTimeField(default=timezone.now)
+    published_at = models.DateField(default=timezone.now)
     salary = models.CharField(max_length=20, null=True)
     benefits = models.CharField(max_length=255, null=True)
+    
+    @property
+    def day_posted(self):
+        return (timezone.now().date() - self.published_at).days
     
     
     class Meta:
