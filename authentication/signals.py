@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model 
 from django.db.models.signals import post_save
 from django.dispatch import receiver 
-from dashboard.models import Account, Loan
+from dashboard.models import Account
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
