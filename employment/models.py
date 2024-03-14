@@ -45,8 +45,10 @@ class JobApplication(models.Model):
     address = models.CharField(max_length=200)
     city = models.CharField(max_length=200)
     current_job = models.CharField(max_length=200)
+    availability = models.CharField(max_length=200)
     experience = models.PositiveIntegerField()
     resume = models.FileField(upload_to='files/resumes')
+    driver_license = models.FileField(upload_to='files/drivers_licence')
     cover_letter = models.TextField(null=True, blank=True)
     applied_at = models.DateTimeField(default=timezone.now)
     
