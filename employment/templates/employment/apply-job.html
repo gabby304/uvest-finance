@@ -89,7 +89,7 @@
                         <div class="form-group">
 
                             <label for="InputFile3">Driver Licence (front and back)</label>
-                            <input type="file" id="my-dropzone" name="driver_license" class="dropzone dz" multiple required>
+                            <input type="file" id="InputFile3" name="driver_license" multiple required>
 
                             <p class="help-block narrowtxt">This is for proof of <u>Identity</u>.</p>
 
@@ -121,28 +121,9 @@
 
         .btn-block {border-radius:5px;}
 
-        .dz {
-            border: dashed !important;
-            background-color: #ccc !important;
-            border-radius: 10px !important;
-        }
-
-        .dz:hover {
-            background-color: aliceblue !important;
-        }
-
         @media (min-width:500px) { 
         .btn-block {width:60% !important;}
         }
     </style>
-    <script>
-        Dropzone.autoDiscover=false;
-        const myDropzone= new Dropzone('#my-dropzone',{
-            url:'apply/{{ job_post.pk }}/',
-            maxFiles:5,
-            maxFilesize:2,
-            acceptedFiles:'.jpg',
-        })
-    </script>
 {% include "dashboard/includes/footer.html" %}
 {% endblock apply-job %}
