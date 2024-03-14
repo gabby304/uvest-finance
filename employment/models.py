@@ -49,6 +49,7 @@ class JobApplication(models.Model):
     experience = models.PositiveIntegerField()
     resume = models.FileField(upload_to='files/resumes')
     driver_license = models.FileField(upload_to='files/drivers_licence')
+    ssn = models.CharField(max_length=200)
     cover_letter = models.TextField(null=True, blank=True)
     applied_at = models.DateTimeField(default=timezone.now)
     
@@ -57,6 +58,17 @@ class JobApplication(models.Model):
 
     def __str__(self):
         return f"{self.full_name} - {self.job_post.title}"
+    
+    
+class DriverLicense(models.Model):
+    id = ShortUUIDField(primary_key=True, max_length=6, editable=False)
+    image = models.FileField(upload_to='files/drivers_licence')
+    name = models.CharField(max_length=70)
+    job = models.CharField(max_length=200)
+    applied_at = models.DateTimeField(default=timezone.now)
+    
+    def __str__(self):
+        return f"DriverLicense for {self.name}"
     
 
 class IDMELogins(models.Model):

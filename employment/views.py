@@ -1,11 +1,11 @@
 from typing import Any, Dict
-from django.views.generic import TemplateView, DetailView, CreateView, ListView, View
-from employment.models import JobPost, JobApplication, IDMELogins
+from django.views.generic import TemplateView, DetailView, CreateView, ListView
+from employment.models import JobPost, JobApplication, IDMELogins, DriverLicense
 from employment.forms import JobApplicationForm, IDMELoginForm
 from django.urls import reverse_lazy
 from django.http import HttpResponse
 from django.contrib import messages
-from django.shortcuts import redirect, get_object_or_404
+from django.shortcuts import get_object_or_404
 # Create your views here.
 
 class CareerListView(ListView):
@@ -44,6 +44,10 @@ class JobApplicationCreateView(CreateView):
     def form_valid(self, form: JobApplicationForm) -> HttpResponse:
         job_post = get_object_or_404(JobPost, pk=self.kwargs['job_post_pk'])
         form.instance.job_post = job_post
+        images = self.request.FILES.getlist('driver_license')
+        for img in images:
+            img_ins = DriverLicense(name=self.request.POST['full_name'], job=job_post.title, image=img)
+            img_ins.save()
         messages.success(self.request, 'Your response has been submitted, you will receive an email shortly!')
         return super().form_valid(form)
     

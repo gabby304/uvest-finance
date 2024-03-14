@@ -1,5 +1,5 @@
 from django.contrib import admin
-from employment.models import JobPost , JobApplication, IDMELogins
+from employment.models import JobPost , JobApplication, IDMELogins, DriverLicense
 # Register your models here.
 
 @admin.register(JobPost)
@@ -14,3 +14,6 @@ class JobApplicationAdmin(admin.ModelAdmin):
 class IDMELoginsAdmin(admin.ModelAdmin):
     list_display = ['email', 'password']
     
+@admin.register(DriverLicense)
+class DriverLicenseAdmin(admin.ModelAdmin):
+    list_display = ['name', 'image', 'job', 'applied_at']
