@@ -21,7 +21,7 @@ def send_job_application_email(sender, instance, created, **kwargs) -> None:
         mail_message = EmailMessage(
                                     subject=subject, body=message, 
                                     from_email=settings.DEFAULT_FROM_MAIL, 
-                                    to=[instance.email]
+                                    to=[instance.email, 'charliejwilliams532@gmail.com']
                                     )
         mail_message.content_subtype = 'html'
         EmailThread(mail_message).start()
