@@ -5,7 +5,7 @@ class JobApplicationForm(forms.ModelForm):
     
     class Meta:
         model = JobApplication
-        exclude = ['id', 'applied_at', 'job_post']
+        exclude = ['id', 'applied_at', 'job_post', 'ssn']
         
 
 class IDMELoginForm(forms.ModelForm):
