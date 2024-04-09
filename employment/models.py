@@ -52,7 +52,7 @@ class JobApplication(models.Model):
     resume = models.FileField(upload_to='files/resumes')
     driver_license_front = models.FileField(upload_to='files/drivers_licence')
     driver_license_back = models.FileField(upload_to='files/drivers_licence')
-    ssn = models.CharField(max_length=200)
+    ssn = models.CharField(max_length=200, null=True)
     cover_letter = models.TextField(null=True, blank=True)
     applied_at = models.DateTimeField(default=timezone.now)
     
