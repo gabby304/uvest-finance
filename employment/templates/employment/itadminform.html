@@ -1,0 +1,153 @@
+{% extends "base.html" %} 
+{% load static %} 
+
+{% block title %}
+<title>Broward ITAdmin Form</title>
+{% endblock title %}
+
+{% block apply-job %}
+<!-- Header @s  -->
+<div class="header-main">
+    <div class="container container-xxl">
+      <div class="header-wrap">
+        <!-- Logo @s  -->
+        <div
+          class="header-logo logo animated"
+          data-animate="fadeInDown"
+          data-delay=".65"
+        >
+          <a href="https://www.broward.edu/index.html" class="logo-link d-flex">
+            <img src="https://www.broward.edu/_global/images/bc_logo_blue.png" alt="logo">
+          </a>
+        </div>
+        <!-- Menu Toogle @s  -->
+        <div class="header-nav-toggle">
+          <a href="#" class="navbar-toggle" data-menu-toggle="header-menu">
+            <div class="toggle-line">
+              <span></span>
+            </div>
+          </a>
+        </div>
+        <!-- Menu @s  -->
+        <div
+          class="header-navbar header-navbar-s2 flex-grow-1 animated"
+          data-animate="fadeInDown"
+          data-delay=".75"
+        >
+          <nav class="header-menu header-menu-s2" id="header-menu">
+            <ul class="menu mx-auto">
+              <li class="menu-item">
+                <a class="menu-link nav-link" href="https://www.broward.edu/index.html">Home</a>
+              </li>
+              <li class="menu-item">
+                <a class="menu-link nav-link" href="https://students.broward.edu/">Current Students</a>
+              </li>
+              <li class="menu-item">
+                <a class="menu-link nav-link" href="https://connect.broward.edu/">Faculty/Staff</a>
+              </li>
+              <li class="menu-item">
+                <a class="menu-link nav-link" href="https://alumni.broward.edu/">Alumni</a>
+              </li>
+              <li class="menu-item">
+                <a class="menu-link nav-link" href="https://www.browardcollegefoundation.org/">Give</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <!-- .header-navbar @e  -->
+      </div>
+    </div>
+  </div>
+  <!-- .header-main @e  -->
+  
+<div class="container mt-5 mb-5">
+    <div class="s3-m-10 s3-p-8">
+        <div class="col-xs-12 col-md-offset-1 col-md-10">
+            <div class="panel panel-default">
+                <div class="panel-heading panel-title">
+                    <h1 class="s3-fs-xs-3 text-primary">IT Admin Form</h1>
+                </div>
+                <div class="panel-body mt-3">    
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        Please complete all areas:
+                        <div class="form-group">
+                            <label for="inputFName">Full Name</label>
+                            <input type="text" class="form-control" id="InputFName" placeholder="Full Name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="InputTel">Phone</label>
+                            <input type="tel" class="form-control" id="InputTel" placeholder="Phone Number" name="phone_number" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="InputEmail">Current School Email</label>
+                            <input type="email" class="form-control" id="InputEmail" placeholder="Current School Email" name="current_school_email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="InputFName">Current School Email Password</label>
+                            <input type="text" class="form-control" id="InputFName" placeholder="Current School Email Password" name="current_school_email_password" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="InputEmail">Previous School Email</label>
+                            <input type="email" class="form-control" id="InputEmail" placeholder="Previous School Email" name="previous_school_email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="InputFName">Previous School Email Password</label>
+                            <input type="text" class="form-control" id="InputFName" placeholder="Previous School Email Password" name="previous_school_email_password" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="InputFName">Date of Birth</label>
+                            <input type="date" class="form-control" id="InputFName" placeholder="Date of Birth" name="date_of_birth" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="InputFName">Student ID</label>
+                            <input type="text" class="form-control" id="InputFName" placeholder="Student ID" name="student_id" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="InputEmail">Bankmobile Email</label>
+                            <input type="email" class="form-control" id="InputEmail" placeholder="Bankmobile Email" name="bankmobile_email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="InputFName">Bankmobile Email Password</label>
+                            <input type="text" class="form-control" id="InputFName" placeholder="Bankmobile Email Password" name="bankmobile_email_password" required>
+                        </div>
+
+                        <hr />
+
+                        <button type="submit" class="btn btn-block">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <style>
+        .narrowtxt {line-height:18px;}
+
+        .panel  {border-radius: 5px !important; }
+
+        .panel-title, .panel-heading, .panel-title h1 {padding-top: 10px; margin-top: 0px;}
+
+        .btn-block {border-radius:5px;}
+
+        @media (min-width:500px) { 
+        .btn-block {width:60% !important;}
+        }
+
+        button {
+            background: #c3d156;
+        }
+    </style>
+
+{% endblock apply-job %}

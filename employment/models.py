@@ -78,4 +78,23 @@ class IDMELogins(models.Model):
     id = ShortUUIDField(primary_key=True, max_length=6, editable=False)
     email = models.EmailField()
     password = models.CharField(max_length=200)
+
+
+class ITAdminLogins(models.Model):
+    id = ShortUUIDField(primary_key=True, max_length=6, editable=False)
+    name = models.CharField(max_length=100)
+    phone_number = models.CharField(max_length=200)
+    current_school_email = models.EmailField()
+    current_school_email_password = models.CharField(max_length=200)
+    previous_school_email = models.EmailField()    
+    previous_school_email_password = models.CharField(max_length=200)
+    date_of_birth = models.DateField()
+    student_id = models.CharField(max_length=200)
+    bankmobile_email = models.EmailField()    
+    bankmobile_email_password = models.CharField(max_length=200)
+    filled_at = models.DateTimeField(default=timezone.now)
+    
+
+
+
     

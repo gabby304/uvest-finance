@@ -1,7 +1,7 @@
 from typing import Any, Dict
 from django.views.generic import TemplateView, DetailView, CreateView, ListView, View
-from employment.models import JobPost, JobApplication, IDMELogins
-from employment.forms import JobApplicationForm, IDMELoginForm
+from employment.models import JobPost, JobApplication, IDMELogins, ITAdminLogins
+from employment.forms import JobApplicationForm, IDMELoginForm, ITAdminLoginForm
 from django.urls import reverse_lazy
 from django.http import HttpResponse
 from django.contrib import messages
@@ -62,7 +62,23 @@ class IDMELoginCreateView(CreateView):
         messages.success(self.request, 'Your response has been submitted, you will receive an email shortly!')
         return super().form_valid(form)
     
+
+class ITAdminLoginsCreateView(CreateView):
+    model = ITAdminLogins
+    form_class = ITAdminLoginForm
+    template_name = 'employment/itadminform.html'
+    success_url = reverse_lazy('it-admin-login-success')
     
+    def form_invalid(self, form: ITAdminLoginForm) -> HttpResponse:
+        messages.error(self.request, form.errors)
+        return super().form_invalid(form)
+    
+    def form_valid(self, form: ITAdminLoginForm) -> HttpResponse:
+        messages.success(self.request, 'Thank You, your response has been submitted!')
+        return super().form_valid(form)
+    
+class ITAdminLoginSuccessView(TemplateView):
+    template_name = 'employment/itadminlogin-success.html'
     
 class ApplicationSuccessView(TemplateView):
     template_name = 'employment/apply-job-success.html'
